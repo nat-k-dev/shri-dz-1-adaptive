@@ -1,0 +1,22 @@
+{
+  "name": "shri-dz-1-adaptive",
+  "version": "1.0.0",
+  "description": "homework adaptive markup\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[Dfor \u001b[2~ada\u001b[2~ptive markup",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/appalse/shri-dz-1-adaptive.git"
+  },
+  "keywords": [
+    "shri"
+  ],
+  "author": "Natalia Karaseva <frontend-hh@yandex.ru> (https://appalse.ru)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/appalse/shri-dz-1-adaptive/issues"
+  },
+  "homepage": "https://github.com/appalse/shri-dz-1-adaptive#readme"
+}
