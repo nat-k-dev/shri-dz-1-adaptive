@@ -1,4 +1,5 @@
 @import "fonts.css";
+@import "border-radius.css";
 @import "colors.css";
 @import "Button.css";
 @import "layout.css";
@@ -8,6 +9,7 @@
 @import "Main.css";
 @import "Container.css";
 @import "Greeting.css";
+@import "Form.css";
 /* BlockName-ElemName_modName_modVal */
 
 * {
@@ -24,19 +26,14 @@
     --main-bg-color: #FFF;
     --text-log-bg-color: #F2F2F2;
 
-
-
     --main-color: var(--black);
-    --header-color: #7F8285;
     
-    --input-placeholder-color: #CCC;
+    
     --primary-build-text-color: #000;
     --secondary-build-text-color: #595959; /* второстепенный, менее важный текст в карточке билда */
     /* серый #939393	Secondary цвет для карточки билда, не используется в макете, но есть в Frame 1*/
     --main-button-color: #000;
     --main-input-color: #000;
-
-    
 
 
     --build-success-color: #00B341;
@@ -52,10 +49,7 @@
     --input-clear-icon-color: #CCCCCC; /* цвет иконки внутри input, чтобы стереть текст */
     --input-mandatory-sign-color: #FF3333; /* обязательное для заполнения поле */
 
-    --button-border-radius: 4px;
-    --input-border-radius: 4px;
-    --build-card-border-radius: 6px;
-    --horizontal-scroll-border-radius: 100px;
+
 
     --icon-space: 8px;
     --main-button-hor-space: 20px;

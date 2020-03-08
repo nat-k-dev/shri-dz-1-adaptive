@@ -1,0 +1,136 @@
+* {
+    --color-input-placeholder: var(--grey-500);
+    --color-form-description: var(--grey-900);
+    --color-form-mandatory: var(--red-600);
+
+    --border-input: 2px solid var(--grey-450);
+    --border-input-focused: 2px solid var(--grey-600);
+}
+
+
+.Form {
+    max-width: 474px;
+    display: flex;
+    flex-direction: column;   
+}
+
+.Form-Item_align_vertical {
+    display: flex;
+    flex-direction: column;
+}
+
+.Form-Item_align_horizontal {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.Form-Item_align_adaptive {
+    display: flex;
+    flex-direction: row;
+    align-items: center;    
+}
+
+@media (max-width: 360px) {
+    .Form-Item_align_adaptive {
+        flex-direction: column;
+        align-items: stretch;
+    }
+}
+
+.Form-Title {
+    font-size: 15px;
+    margin-bottom: 8px;
+}
+
+.Form-Description {
+    color: var(--color-form-description);
+    font-size: 13px;
+}
+
+.Form-Input {
+    height: 36px;
+    font-size: 13px;
+    border-radius: var(--border-radius-input);
+    border: var(--border-input);
+    padding: 11px 13px 10px;
+}
+
+.Form-InputNumber {
+    text-align: end;
+}
+
+.Form-Input_size_small {
+    width: 48px;
+}
+
+.Form-Input:focus {
+    border: var(--border-input-focused);
+    outline: none;
+}
+
+.Form-Input:focus::placeholder {
+    color: transparent;
+}
+
+.Form-Input::placeholder {
+    color: var(--color-input-placeholder);
+}
+
+.Form-Label {
+    font-size: 13px;
+}
+
+.Form-Label_color_mandatory {
+    color: var(--color-form-mandatory);
+}
+
+.Form-Item_spaceRight_s {
+    margin-right: 8px;
+}
+
+
+.Form-Item_spaceBottom_xs {
+    margin-bottom: 6px;
+}
+
+.Form-Item_spaceBottom_m {
+    margin-bottom: 18px;
+}
+
+.Form-Item_spaceBottom_l {
+    margin-bottom: 20px;
+}
+
+.Form-Item_spaceBottom_xl {
+    margin-bottom: 24px;
+}
+
+@media (max-width: 360px) {
+    .Form-Item_spaceBottom_l {
+        margin-bottom: 16px;
+    }
+    .Form-Item_spaceBottom_xl {
+        margin-bottom: 20px;
+    }
+}
+
+.Form-Item_verticalSpace_l {
+    margin-top: 8px;
+    margin-bottom: 22px;
+}
+
+.Form-Button_gap_s {
+    margin-right: 8px;
+}
+
+@media (max-width: 360px) {
+    .Form-Item_verticalSpace_l {
+        margin-top: 14px;
+        margin-bottom: 14px;
+    }
+    .Form-Button_gap_s {
+        margin-right: 0;
+        margin-bottom: 12px;
+    }
+}

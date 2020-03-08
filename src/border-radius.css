@@ -1,0 +1,7 @@
+/* скругления */
+* {
+    --border-radius-button: 4px;
+    --border-radius-input: 4px;
+    --border-radius-build-card: 6px;
+    --border-radius-horizontal-scroll: 100px;    
+}

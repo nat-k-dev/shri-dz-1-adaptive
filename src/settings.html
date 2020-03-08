@@ -16,35 +16,35 @@
 
     <main class="Main">
         <div class="Container">
-            <form>
-                <div>
-                    <h2>Settings</h2>
-                    <div>Configure repository connection and synshronization settings.</div>
+            <form class="Form" action="" method="get">
+                <div class="Form-Item_align_vertical Form-Item_verticalSpace_l">
+                    <h2 class="Form-Title">Settings</h2>
+                    <div class="Form-Description">Configure repository connection and synshronization settings.</div>
                 </div>
 
-                <div>
-                    <label>GitHub repository<span>*</span></label>
-                    <input type="text" placeholder="user-name/repo-name">
+                <div class="Form-Item_align_vertical Form-Item_spaceBottom_m">
+                    <label class="Form-Label Form-Item_spaceBottom_xs">GitHub repository<span class="Form-Label_color_mandatory">*</span></label>
+                    <input class="Form-Input" type="search" placeholder="user-name/repo-name" required>
                 </div>
 
-                <div>
-                    <label>Build command</label>
-                    <input type="text" placeholder="npm ci && npm run build">
+                <div class="Form-Item_align_vertical Form-Item_spaceBottom_m">
+                    <label class="Form-Label Form-Item_spaceBottom_xs">Build command</label>
+                    <input class="Form-Input" type="search" placeholder="npm ci && npm run build">
                 </div>
                 
-                <div>
-                    <label>Main branch</label>
-                    <input type="text" placeholder="master">
+                <div class="Form-Item_align_vertical Form-Item_spaceBottom_l">
+                    <label class="Form-Label Form-Item_spaceBottom_xs">Main branch</label>
+                    <input class="Form-Input" type="search" placeholder="master">
                 </div>
 
-                <div>
-                    <label>Synchronize every </label>
-                    <input type="text" placeholder="10">
-                    <label>minutes</label>
+                <div class="Form-Item_align_horizontal Form-Item_spaceBottom_xl">
+                    <label class="Form-Label Form-Item_spaceRight_s">Synchronize every </label>
+                    <input class="Form-Input Form-InputNumber Form-Input_size_small Form-Item_spaceRight_s" type="text" placeholder="10">
+                    <label class="Form-Label">minutes</label>
                 </div>
 
-                <div>
-                    <button class="Button Button_color_primary Button_size_m">Save</button>
+                <div class="Form-Item_align_adaptive">
+                    <button class="Button Button_color_primary Button_size_m Form-Button_gap_s">Save</button>
                     <button class="Button Button_color_secondary Button_size_m">Cancel</button>
                 </div>
 
