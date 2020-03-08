@@ -1,0 +1,17 @@
+* {
+    --white: #FFF;
+    --black: #000;
+    --yellow-300: #FFCC00;
+    --yellow-400: #F2C200;
+    --yellow-600: #B38F00;
+
+    --grey-50: #F0F2F3;
+    --grey-100: #F2F2F2;
+    --grey-300: #E6E6E6;
+    --grey-400: #DBDBDB;
+    --grey-600: #B3B3B3;
+    --grey-700: #B9B9B9;
+    --grey-900: #7F8285;
+
+    --red-400: #E00000;
+}

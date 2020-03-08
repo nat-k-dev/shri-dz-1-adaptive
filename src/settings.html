@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Settings</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='style.css'>
+</head>
+<body class="Page">
+    <header class="Header">
+        <div class="Container">
+            <h1 class="Header-Caption Header-Caption_color_title">School CI server</h1>
+        </div>
+    </header>
+
+    <main class="Main">
+        <div class="Container">
+            <form>
+                <div>
+                    <h2>Settings</h2>
+                    <div>Configure repository connection and synshronization settings.</div>
+                </div>
+
+                <div>
+                    <label>GitHub repository<span>*</span></label>
+                    <input type="text" placeholder="user-name/repo-name">
+                </div>
+
+                <div>
+                    <label>Build command</label>
+                    <input type="text" placeholder="npm ci && npm run build">
+                </div>
+                
+                <div>
+                    <label>Main branch</label>
+                    <input type="text" placeholder="master">
+                </div>
+
+                <div>
+                    <label>Synchronize every </label>
+                    <input type="text" placeholder="10">
+                    <label>minutes</label>
+                </div>
+
+                <div>
+                    <button class="Button Button_color_primary Button_size_m">Save</button>
+                    <button class="Button Button_color_secondary Button_size_m">Cancel</button>
+                </div>
+
+            </form>
+        </div>
+    </main>
+
+    <footer class="Footer">
+        <div class="Container">
+            <div class="NavLinks">
+                <div>Support</div>
+                <div>Learning</div>
+            </div>
+            <div>&copy; 2020 Natalia Karaseva</div>
+        </div>
+    </footer>   
+</body>
+</html>

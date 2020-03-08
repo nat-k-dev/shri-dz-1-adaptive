@@ -1,0 +1,32 @@
+.Header {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+@media (max-width: 360px) {
+    .Header {
+        padding-top: 12px;
+        padding-bottom: 12px;
+    }    
+}
+
+
+
+.Header-Caption {
+    font-size: 24px;
+    font-weight: 500;
+}
+
+@media (max-width: 360px) {
+    .Header-Caption {
+        font-size: 18px;
+    }
+}
+
+.Header-Caption_color_title {
+    color: var(--grey-900);
+}
+
+.Header-Caption_color_build {
+    color: var(--black);
+}
