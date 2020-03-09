@@ -1,13 +1,15 @@
 @import "fonts.css";
+@import "border.css";
 @import "border-radius.css";
 @import "colors.css";
+@import "box-shadow.css";
 @import "Button.css";
 @import "layout.css";
+@import "Container.css";
 @import "Header.css";
 @import "Footer.css";
 @import "NavLinks.css";
 @import "Main.css";
-@import "Container.css";
 @import "Greeting.css";
 @import "Form.css";
 @import "BuildList.css";
@@ -21,7 +23,7 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    font-family: "YS Text", Arial, Helvetica, sans-serif;
+    
 
     --icon-space: 8px;
     --main-button-hor-space: 20px;

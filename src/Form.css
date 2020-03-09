@@ -3,10 +3,9 @@
     --color-form-description: var(--grey-900);
     --color-form-mandatory: var(--red-600);
 
-    --border-input: 2px solid var(--grey-450);
-    --border-input-focused: 2px solid var(--grey-600);
+    --border-input: var(--border-width-input) solid var(--grey-450);
+    --border-input-focused: var(--border-width-input) solid var(--grey-600);
 }
-
 
 .Form {
     max-width: 474px;
