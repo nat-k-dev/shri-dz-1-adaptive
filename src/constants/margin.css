@@ -1,0 +1,14 @@
+* {
+    --space-m: 8px;
+    --space-xl: 10px;
+    --space-xxl: 11px;
+    --space-xxxl: 12px;
+    --space-xxxxl: 13px;
+    --space-xxxxxl: 20px;
+
+    --space-icon: var(--space-m);
+    --space-horizontal-button-primary: var(--space-xxxxxl);
+    --space-horizontal-input: var(--space-xxxxl);
+    --space-top-input: var(--space-xxl);
+    --space-bottom-input: var(--space-xl);
+}

@@ -1,0 +1,68 @@
+@font-face {
+    font-family: "YS Text";
+    src: url("./../fonts/PyVcRbwHetz0gOVWLonWH7Od8zM.woff2") format("woff2"), url("./../fonts/bIx8jOfCEfR-mECoDUEZywDBuHA.woff") format("woff");
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "YS Text";
+    src: url("./../fonts/7_GKBdKFbUPzKlghJRv55xgz0FQ.woff2") format("woff2"), url("./../fonts/SmqPmIMEXrW4lOY8QrhTUVDbrro.woff") format("woff");
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "YS Text";
+    src: url("./../fonts/6Roy0LCd05cK4nNCipgzheYcNVU.woff2") format("woff2"), url("./../fonts/KtHQR1erf3spayoIM4M4ngg0e2E.woff") format("woff");
+    font-weight: 700;
+    font-style: normal;
+}
+
+* {
+    font-family: "YS Text", Arial, Helvetica, sans-serif;
+}
+
+.font_size_xxs {
+    font-size: 10px;
+}
+
+.font_size_s {
+    font-size: 13px;
+}
+
+.font_size_m {
+    font-size: 15px;
+}
+
+.font_size_xl {
+    font-size: 18px;
+    font-weight: 500;
+}
+
+@media (max-width: 360px) {
+    .font_size_xl {
+        font-size: 16px;
+    }
+}
+
+/*
+| font-size: 24px; line-height: 28px; | размер заголовка |
+| font-size: 24px; line-height: 30px; | размер заголовка билда |
+| font-size: 18px; line-height: 22px; | размер заголовка на мобильном экране, в т.ч. заголовка билда |
+| font-size: 13px; line-height: 125%; | размер текста |
+| font-size: 13px; line-height: 36px; | размер текста кнопки |
+| font-size: 13px; line-height: 28px; | размер текста кнопок на десктоп версии Show more, Rebuild, Run build |
+| font-size: 13px; line-height: 16px; | размер ссылок в футере в десктопе |
+| font-size: 13px; line-height: 18px; | размер текста в футере |
+| font-size: 15px; line-height: 20px; | размер подзаголовка формы |
+| font-size: 13px; line-height: 18px; | размер текста описаниии в форме |
+| font-size: 13px; line-height: 15px; | размер текста внутри input  |
+| font-size: 13px; line-height: 18px; | размер подзаголовка input, текста вокруг input  |
+| font-size: 18px; line-height: 20px; | размер текста номера билда в карточке билда |
+| font-size: 16px; line-height: 16px; | размер текста номера билда в карточке билда на мобильной версии |
+| font-size: 15px; line-height: 20px; | размер текста имени билда в карточке билда |
+| font-size: 13px; line-height: 16px; | размер текста коммита и юзера в карточке билда |
+| font-size: 13px; line-height: 16px; | размер текста в блоке с временем |
+| font-size: 10px; line-height: 20px; | размер текста лога билда |
+*/
