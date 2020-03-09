@@ -1,8 +1,0 @@
-* {
-    /* Базовые  */
-    --border-width-m: 2px;
-
-    /* Семантические */
-    --border-width-input: var(--border-width-m);
-    --border-width-button: var(--border-width-m);
-}
