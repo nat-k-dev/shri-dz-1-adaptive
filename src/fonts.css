@@ -31,3 +31,9 @@
     font-size: 18px;
     font-weight: 500;
 }
+
+@media (max-width: 360px) {
+    .font_size_xl {
+        font-size: 16px;
+    }
+}

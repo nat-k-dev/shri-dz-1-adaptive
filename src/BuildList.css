@@ -22,6 +22,11 @@
     cursor: pointer;
     box-shadow: var(--box-shadow-build-card);
     border-radius: var(--border-radius-build-card);
+    margin-top: 8px;
+}
+
+.Build-Item:last-of-type {
+    margin-bottom: 8px;
 }
 
 .Build-Item:hover {
