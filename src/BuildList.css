@@ -33,6 +33,11 @@
     box-shadow: var(--box-shadow-build-card-hovered);
 }
 
+.Build-Item.Build-Item_action_no:hover {
+    box-shadow: var(--box-shadow-build-card);
+    cursor: auto;
+}
+
 @media (max-width: 360px) {
     .Build-Item {
         padding: 16px 7px 16px 13px;

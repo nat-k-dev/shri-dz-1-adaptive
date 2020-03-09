@@ -14,7 +14,7 @@
 @import "TimeInfo.css";
 @import "BuildStatuses.css";
 @import "Commit.css";
-
+@import "BuildLog.css";
 /* BlockName-ElemName_modName_modVal */
 
 * {
@@ -22,8 +22,6 @@
     margin: 0;
     padding: 0;
     font-family: "YS Text", Arial, Helvetica, sans-serif;
-
-    --text-log-bg-color: #F2F2F2;
 
     --icon-space: 8px;
     --main-button-hor-space: 20px;

@@ -19,6 +19,10 @@
     font-style: normal;
 }
 
+.font_size_xxs {
+    font-size: 10px;
+}
+
 .font_size_s {
     font-size: 13px;
 }
