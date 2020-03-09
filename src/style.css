@@ -10,6 +10,11 @@
 @import "Container.css";
 @import "Greeting.css";
 @import "Form.css";
+@import "BuildList.css";
+@import "TimeInfo.css";
+@import "BuildStatuses.css";
+@import "Commit.css";
+
 /* BlockName-ElemName_modName_modVal */
 
 * {
@@ -18,63 +23,12 @@
     padding: 0;
     font-family: "YS Text", Arial, Helvetica, sans-serif;
 
-
-
-    /* текст */
-    --color-main-text: var(--black);
-
-    --main-bg-color: #FFF;
     --text-log-bg-color: #F2F2F2;
-
-    --main-color: var(--black);
-    
-    
-    --primary-build-text-color: #000;
-    --secondary-build-text-color: #595959; /* второстепенный, менее важный текст в карточке билда */
-    /* серый #939393	Secondary цвет для карточки билда, не используется в макете, но есть в Frame 1*/
-    --main-button-color: #000;
-    --main-input-color: #000;
-
-
-    --build-success-color: #00B341;
-    --build-in-progress-color: #FF9A00;
-    --build-failed-color: #FF3333;
-
-    --build-commit-icon-color: #B3B3B3;
-    --build-time-icon-color: #CECECE;
-
-    --horizontal-scroll-color: #A9A9A9;
-    --input-active-color: #B3B3B3; /* цвет границы активного input, в который вводится текст */
-    --input-border-color: #D9D9D9; /* цвет границы input обычный */
-    --input-clear-icon-color: #CCCCCC; /* цвет иконки внутри input, чтобы стереть текст */
-    --input-mandatory-sign-color: #FF3333; /* обязательное для заполнения поле */
-
-
 
     --icon-space: 8px;
     --main-button-hor-space: 20px;
     --input-hor-space: 13px;
     --input-top-space: 11px;
     --input-bottom-space: 10px;
-
-    --input-border: 2px;
-
-    --box-shadow-build-card: 0px 1px 1px rgba(67, 68, 69, 0.3), 0px 0px 1px rgba(67, 68, 69, 0.3); /* box-shadow */
-    --box-shadow-build-card-active: 0px 2px 8px rgba(67, 68, 69, 0.3), 0px 0px 1px rgba(67, 68, 69, 0.3);
-
     
 }
-
-/* ------------------------------- HEADER ------------------------------------- */
-
-
-
-/* ------------------------------- FOOTER ------------------------------------- */
-
-/* ------------------------------- BUTTON ------------------------------------- */
-
-
-
-
-
-/* ------------------------------- ... ------------------------------------- */

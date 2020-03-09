@@ -21,6 +21,7 @@
     font-size: 13px;
     cursor: pointer;
     text-align: center;
+    min-width: max-content;
 }
 
 .Button:focus {
@@ -47,12 +48,12 @@
 
 .Button_size_xs {
     height: 28px;
-    padding: 8px;
+    padding-left: 8px;
+    padding-right: 8px;
 }
 
 .Button_size_mixSM {
     height: 28px;
-    
 }
 
 @media (max-width: 360px) {
@@ -110,3 +111,6 @@
     margin-bottom: 8px;
 }
 
+.Button_gap_s {
+    margin-right: 8px;
+}

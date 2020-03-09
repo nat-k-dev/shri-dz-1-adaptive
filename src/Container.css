@@ -5,6 +5,13 @@
     align-items: center;
 }
 
+.Container_align_headerBuild {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
 .Container_align_centralize {
     display: flex;
     flex-direction: row;

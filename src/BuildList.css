@@ -1,0 +1,102 @@
+* {
+    --box-shadow-build-card: 0px 1px 1px rgba(67, 68, 69, 0.3), 0px 0px 1px rgba(67, 68, 69, 0.3); /* box-shadow */
+    --box-shadow-build-card-hovered: 0px 2px 8px rgba(67, 68, 69, 0.3), 0px 0px 1px rgba(67, 68, 69, 0.3);
+    --color-text-build-secondary: var(--grey-1000);
+    --color-border-build-info: var(--grey-50);
+}
+
+.BuildList {
+    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    font-size: 13px;
+
+}
+
+.Build-Item {
+    display: grid;
+    grid-template-columns: 22px 1fr;
+    grid-gap: 9px;
+    padding: 12px 25px 12px 24px;
+    cursor: pointer;
+    box-shadow: var(--box-shadow-build-card);
+    border-radius: var(--border-radius-build-card);
+}
+
+.Build-Item:hover {
+    box-shadow: var(--box-shadow-build-card-hovered);
+}
+
+@media (max-width: 360px) {
+    .Build-Item {
+        padding: 16px 7px 16px 13px;
+    }
+}
+
+.Build-Details_align_compact {
+    display: grid;
+    grid-gap: 9px;
+    grid-template-columns: 1fr 98px;
+}
+
+@media (max-width: 360px) {
+    .Build-Details_align_compact {
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr min-content;
+    }   
+}
+
+.Build-Details_align_complete {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 16px;
+}
+
+.Build-Id:before {
+    content: "#";
+}
+
+
+.Build-Caption {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.Build-Info {
+    display: grid;
+    grid-gap: 8px;
+    grid-template-rows: 20px min-content;
+}
+
+.Build-Title {
+    display: grid;
+    grid-gap: 4px;
+    grid-template-columns: 52px 1fr;
+    align-items: center;
+}
+
+@media (max-width: 360px) {
+    .Build-Info {
+        grid-gap: 8px;
+        grid-template-rows: max-content max-content;
+        border-bottom: 1px solid var(--color-border-build-info);
+        padding-bottom: 8px;
+    }
+    .Build-Title {
+        grid-gap: 8px;
+        grid-template-columns: 1fr;
+        grid-template-rows: 16px 1fr;
+    }
+}
+
+.Build-Items_align_horizontal {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.Build_text_secondary {
+    color: var(--color-text-build-secondary);
+}

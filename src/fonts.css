@@ -18,3 +18,16 @@
     font-weight: 700;
     font-style: normal;
 }
+
+.font_size_s {
+    font-size: 13px;
+}
+
+.font_size_m {
+    font-size: 15px;
+}
+
+.font_size_xl {
+    font-size: 18px;
+    font-weight: 500;
+}

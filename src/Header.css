@@ -15,6 +15,13 @@
 .Header-Caption {
     font-size: 24px;
     font-weight: 500;
+    margin-right: 8px;
+}
+
+@media (max-width: 410px) {
+    .Header-Caption {
+        max-width: 220px;
+    }
 }
 
 @media (max-width: 360px) {
