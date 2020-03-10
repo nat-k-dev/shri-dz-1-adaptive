@@ -1,6 +1,5 @@
 .Page {
     min-height: 100vh;
-    min-width: 100vw;
     display: grid;    
     grid-template-rows: minmax(max-content, 50px) 1fr minmax(max-content, 32px);
     grid-template-columns: 1fr;

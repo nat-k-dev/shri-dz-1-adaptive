@@ -2,7 +2,7 @@
     --text-log-bg-color: var(--grey-100);
 }
 
-.Build-Log {
+.BuildLog {
     background-color: var(--text-log-bg-color);
     border-radius: var(--border-radius-build-log);
     margin-top: 12px;
@@ -12,7 +12,7 @@
 }
 
 @media (max-width: 360px) {
-    .Build-Log {
+    .BuildLog {
         border-radius: 0;
         margin-top: 16px;
     }
