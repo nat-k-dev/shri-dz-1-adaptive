@@ -20,7 +20,11 @@
 }
 
 * {
-    font-family: "YS Text", Arial, Helvetica, sans-serif;
+    --font-family-yandex: "YS Text", Arial, Helvetica, sans-serif;
+}
+
+.Page_font_yandex {
+    font-family: var(--font-family-yandex);
 }
 
 .font_size_xxs {
