@@ -35,10 +35,6 @@
     margin-top: 8px;
 }
 
-.BuildCard:last-of-type {
-    margin-bottom: 8px;
-}
-
 @media (max-width: 360px) {
     .BuildCard {
         padding: 16px 7px 16px 13px;
