@@ -3,6 +3,7 @@
 }
 
 .BuildLog {
+    max-width: calc(100vw - 49px);
     background-color: var(--text-log-bg-color);
     border-radius: var(--border-radius-build-log);
     margin-top: 12px;
@@ -15,5 +16,8 @@
     .BuildLog {
         border-radius: 0;
         margin-top: 16px;
+        margin-left: -16px;
+        margin-right: -16px;
+        max-width: calc(100vw - 17px);
     }
 }
