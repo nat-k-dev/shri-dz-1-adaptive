@@ -22,9 +22,10 @@ node ./server/server.js
 *Нужно передавать специальный токен в заголовке Authorization (например, Authorization: Bearer eyjhbgcioijiuzi1niisi, где "eyjhbgcioijiuzi1niisi" — это токен). Получить токен можно на страничке https://hw.shri.yandex. Для этого нужно залогиниться через GitHub. Скопируйте токен и сохраните его в файле ./server/authTokens/appalse.token.txt
 
 Не сделано:
-- offset и limit параметры в GET запросе к hw.shri.yandex/api/build/list 
-- в информации о сборке нет полей start и duration
-- постановка в очередь
+- пока не получилось достать имя автора и сообщение из гита.
+- offset и limit параметры в GET запросе к hw.shri.yandex/api/build/list. Пока не очень понятно, откуда брать, кто хранит текущее значение offset  limit (сервер или кто-то снаружи?)
+- в информации о сборке нет полей start и duration. Вроде бы, сейчас вручную дергаем ручки, в другой домашке будет заполнение start и duration.
+- постановка в очередь. Есть запрос к ручке /build/request, но очереди нет.
 
 
 
