@@ -1,17 +1,25 @@
 # Домашнее задание. Node.js
 
-Находится в ветке "node-server-dev". 
+Сервер находится в ветке "node-server-dev". 
 
-Требуется установить "del", "expres" и "axios"
+Нужно установить "del", "expres" и "axios"
 ```
 npm install
 ```
 
+Открыть файл ./server/authTokens/auth.token.js и в переменную authToken положить свой токен*. 
+
+Запустить сервер:
+```
+node ./server/server.js
+```
+
+Дополнительно:
 в запросах к API укажите параметр "не проверять сертификат":
 - curl — добавьте параметр -k или --insecure
 - модули https и request — добавьте параметр rejectUnauthorized: false
 
-Нужно передавать специальный токен в заголовке Authorization (например, Authorization: Bearer eyjhbgcioijiuzi1niisi, где "eyjhbgcioijiuzi1niisi" — это токен). Получить токен можно на страничке https://hw.shri.yandex. Для этого нужно залогиниться через GitHub. Скопируйте токен и сохраните его в файле ./server/authTokens/appalse.token.txt
+*Нужно передавать специальный токен в заголовке Authorization (например, Authorization: Bearer eyjhbgcioijiuzi1niisi, где "eyjhbgcioijiuzi1niisi" — это токен). Получить токен можно на страничке https://hw.shri.yandex. Для этого нужно залогиниться через GitHub. Скопируйте токен и сохраните его в файле ./server/authTokens/appalse.token.txt
 
 Не сделано:
 - offset и limit параметры в GET запросе к hw.shri.yandex/api/build/list 
