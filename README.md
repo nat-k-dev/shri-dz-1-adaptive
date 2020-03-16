@@ -2,6 +2,11 @@
 
 Находится в ветке "node-server-dev". 
 
+Требуется установить "del", "expres" и "axios"
+```
+npm install
+```
+
 в запросах к API укажите параметр "не проверять сертификат":
 - curl — добавьте параметр -k или --insecure
 - модули https и request — добавьте параметр rejectUnauthorized: false
