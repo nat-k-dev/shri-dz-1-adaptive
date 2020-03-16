@@ -1,3 +1,23 @@
+# Домашнее задание. Node.js
+
+Находится в ветке "node-server-dev". 
+
+в запросах к API укажите параметр "не проверять сертификат":
+- curl — добавьте параметр -k или --insecure
+- модули https и request — добавьте параметр rejectUnauthorized: false
+
+Нужно передавать специальный токен в заголовке Authorization (например, Authorization: Bearer eyjhbgcioijiuzi1niisi, где "eyjhbgcioijiuzi1niisi" — это токен). Получить токен можно на страничке https://hw.shri.yandex. Для этого нужно залогиниться через GitHub. Скопируйте токен и сохраните его в файле ./server/authTokens/appalse.token.txt
+
+Не сделано:
+- offset и limit параметры в GET запросе к hw.shri.yandex/api/build/list 
+- в информации о сборке нет полей start и duration
+- постановка в очередь
+
+
+
+
+
+
 # Домашнее задание. Адаптивная верстка.
 
 Можно (и хотелось бы) использовать мою работу для примеров в разборе ДЗ. С отсылкой к моей работе по имени.
