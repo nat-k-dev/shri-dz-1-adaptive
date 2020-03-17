@@ -12,12 +12,7 @@
 
 .Header-Caption {
     margin-right: 8px;
-}
-
-@media (max-width: 410px) {
-    .Header-Caption {
-        max-width: 220px;
-    }
+    word-break: break-all;
 }
 
 .Header-Caption_color_title {

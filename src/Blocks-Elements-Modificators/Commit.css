@@ -29,4 +29,10 @@
 
 .Commit-Branch {
     margin-right: 4px;
+    word-break: break-all;
+}
+
+.Commit-Hash,
+.Commit-AuthorName {
+    word-break: break-all;
 }
