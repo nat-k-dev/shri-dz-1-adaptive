@@ -71,6 +71,14 @@
     white-space: nowrap;
 }
 
+@media (max-width: 360px) {
+    .Build-Caption {
+        text-overflow: initial;
+        overflow: auto;
+        white-space: initial;
+    }
+}
+
 .Build-Info {
     display: grid;
     grid-gap: 8px;
