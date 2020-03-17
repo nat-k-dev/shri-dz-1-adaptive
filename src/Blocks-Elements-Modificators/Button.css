@@ -1,4 +1,4 @@
-* {
+:root {
     /* фон кнопок */
     --bg-color-btn-primary: var(--yellow-300);
     --bg-color-btn-primary-hovered: var(--yellow-400);

@@ -1,4 +1,4 @@
-* {
+:root {
     --box-shadow-build-card: var(--box-shadow-grey-500-center), var(--box-shadow-grey-500-right); /* box-shadow */
     --box-shadow-build-card-hovered: var(--box-shadow-grey-800-center), var(--box-shadow-grey-800-right);
     --color-text-build-secondary: var(--grey-1000);

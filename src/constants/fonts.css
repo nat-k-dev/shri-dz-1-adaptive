@@ -19,7 +19,7 @@
     font-style: normal;
 }
 
-* {
+:root {
     --font-family-yandex: "YS Text", Arial, Helvetica, sans-serif;
 }
 

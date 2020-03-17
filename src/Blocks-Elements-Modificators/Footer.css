@@ -1,4 +1,4 @@
-* {
+:root {
     --bg-color-footer: var(--grey-50);
     --color-footer: var(--grey-900);
 }

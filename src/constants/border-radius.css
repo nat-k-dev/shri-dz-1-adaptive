@@ -1,5 +1,5 @@
 /* скругления */
-* {
+:root {
     /* Базовые */
     --border-radius-s: 4px;
     --border-radius-m: 6px;

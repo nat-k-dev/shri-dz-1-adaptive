@@ -1,4 +1,4 @@
-* {
+:root {
     --color-build-success: var(--green-500);
     --color-build-failed: var(--red-600);
     --color-build-in-progress: var(--orange-400);
