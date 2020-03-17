@@ -89,15 +89,20 @@ app.get('/api/builds', async (req, res) => {
 });
 
 // добавить сборку с commitHash в очередь сборок
-app.post('/api/builds:commitHash', async (req, res) => {
+app.post('/api/builds/:commitHash', async (req, res) => {
     try {
         const commitHash = req.params.commitHash;
-        const { commitMessage, branchName, authorName } = FindCommit(commitHash);
+        const buildConfResponse = await api.get('/conf');
+        const buildSettings = buildConfResponse.data.data;
+        if (!buildSettings) {
+            throw new Error('Build settings are not found');
+        }
+        const { commitMessage, authorName } = await FindCommit(commitHash, buildSettings.mainBranch);
         const commitSettings = {
-            "commitMessage": "string",
+            "commitMessage": commitMessage,
             "commitHash": commitHash,
-            "branchName": "string",
-            "authorName": "string"
+            "branchName": buildSettings.mainBranch,
+            "authorName": authorName
         }
         const apiResponse = await api.post('/build/request', commitSettings);
         res.status(apiResponse.status).send(apiResponse.statusText);
