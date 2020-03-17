@@ -22,3 +22,8 @@
 .Header-Caption_color_build {
     color: var(--black);
 }
+
+.Header_spaces_h1 {
+    margin: 0;
+    padding: 0;
+}

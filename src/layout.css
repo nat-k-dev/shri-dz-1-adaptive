@@ -3,6 +3,8 @@
     display: grid;    
     grid-template-rows: minmax(max-content, 50px) 1fr minmax(max-content, 32px);
     grid-template-columns: 1fr;
+    margin: 0;
+    padding: 0;
 }
 
 .Header,
