@@ -76,7 +76,12 @@ app.post('/api/settings', async (req, res) => {
 // получить извне список сборок
 app.get('/api/builds', async (req, res) => {
     try {
-        const apiResponse = await api.get('/build/list');
+        const apiResponse = await api.get('/build/list', {
+            params: {
+                offset: req.params.offset || 0,
+                limit: req.params.limit || 25
+            }
+        });
         const buildsArray = apiResponse.data.data;
         if (buildsArray) {
             res.status(200).send(buildsArray);
@@ -105,6 +110,7 @@ app.post('/api/builds/:commitHash', async (req, res) => {
             "authorName": authorName
         }
         const apiResponse = await api.post('/build/request', commitSettings);
+        console.log(apiResponse);
         res.status(apiResponse.status).send(apiResponse.statusText);
     } catch (e) {
         console.log(e);
