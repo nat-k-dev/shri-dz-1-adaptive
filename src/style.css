@@ -18,6 +18,7 @@
 @import "./Blocks-Elements-Modificators/BuildStatuses.css";
 @import "./Blocks-Elements-Modificators/Commit.css";
 @import "./Blocks-Elements-Modificators/BuildLog.css";
+@import "./Blocks-Elements-Modificators/Icon.css";
 
 * {
     box-sizing: border-box;
