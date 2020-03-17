@@ -21,6 +21,7 @@
 
 :root {
     --font-family-yandex: "YS Text", Arial, Helvetica, sans-serif;
+    --color-main-text: var(--black);
 }
 
 .Page_font_yandex {
