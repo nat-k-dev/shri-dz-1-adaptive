@@ -20,7 +20,6 @@
     color: var(--color-main-text);
     cursor: pointer;
     text-align: center;
-    min-width: max-content;
 }
 
 .Button:focus {
