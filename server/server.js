@@ -43,6 +43,7 @@ app.get('/api/settings', async (req, res) => {
         }
     } catch (e) {
         console.log(e);
+        res.error(e);
     }
 });
 
@@ -69,6 +70,7 @@ app.post('/api/settings', async (req, res) => {
         GitClone(req.body.repoName, req.body.mainBranch);
     } catch (e) {
         console.log(e); 
+        res.error(e);
     }
     
 });
@@ -90,6 +92,7 @@ app.get('/api/builds', async (req, res) => {
         }
     } catch (e) {
         console.log(e);
+        res.error(e);
     }
 });
 
@@ -114,6 +117,7 @@ app.post('/api/builds/:commitHash', async (req, res) => {
         res.status(apiResponse.status).send(apiResponse.statusText);
     } catch (e) {
         console.log(e);
+        res.error(e);
     }
 });
 
@@ -135,6 +139,7 @@ app.get('/api/builds/:buildId', async (req, res) => {
         }
     } catch (e) {
         console.log(e);
+        res.error(e);
     }
 });
 
@@ -156,6 +161,7 @@ app.get('/api/builds/:buildId/logs', async (req, res) => {
         }
     } catch (e) {
         console.log(e);
+        res.error(e);
     }
 });
 
