@@ -4,14 +4,19 @@
 
 Сервер находится в ветке "node-server-dev". 
 
-Нужно установить "del", "expres" и "axios"
+Нужно установить "del", "expres", "axios", "dotenv"
 ```
 npm install
 ```
 
-Открыть файл ./server/authTokens/auth.token.js и в переменную authToken положить свой токен*. 
+Создать файл .env в корневой директории (рядом с package.json) и задать свой токен* через:
+```
+API_TOKEN=sfsksuehfksjdfhisudhf...
+```
 
-Запустить сервер:
+*Нужно передавать специальный токен в заголовке Authorization (например, Authorization: Bearer eyjhbgcioijiuzi1niisi, где "eyjhbgcioijiuzi1niisi" — это токен). Получить токен можно на страничке https://hw.shri.yandex. Для этого нужно залогиниться через GitHub. Скопируйте токен и сохраните его в файле ./server/authTokens/appalse.token.txt
+
+Запустить сервер (порт 3000 по умолчанию):
 ```
 node ./server/server.js
 ```
@@ -21,7 +26,6 @@ node ./server/server.js
 - curl — добавьте параметр -k или --insecure
 - модули https и request — добавьте параметр rejectUnauthorized: false
 
-*Нужно передавать специальный токен в заголовке Authorization (например, Authorization: Bearer eyjhbgcioijiuzi1niisi, где "eyjhbgcioijiuzi1niisi" — это токен). Получить токен можно на страничке https://hw.shri.yandex. Для этого нужно залогиниться через GitHub. Скопируйте токен и сохраните его в файле ./server/authTokens/appalse.token.txt
 
 Не сделано:
 - сейчас я никак нигде не заполняю поля start и duration в сборке. Вроде бы, сейчас вручную дергаем ручки, в другой домашке будет заполнение start и duration?
