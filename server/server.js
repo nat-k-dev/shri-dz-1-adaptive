@@ -2,15 +2,16 @@ const path = require('path');
 const axios = require('axios');
 const https = require('https');
 const express = require('express');
-const { authToken } = require('./authTokens/auth.token');
 const { getFileContent } = require('./static_pages');
 const { IsStr, IsNum } = require("./server_utils");
-const { FindCommit, GitClone } = require("./git_utils")
+const { FindCommit, GitClone } = require("./git_utils");
+require('dotenv').config({path: __dirname + './../.env'});
+
 
 // build api
 const api = axios.create({
     baseURL: 'https://hw.shri.yandex/api',
-    headers: { Authorization: "Bearer " + authToken },
+    headers: { Authorization: "Bearer " + process.env.API_TOKEN },
     httpsAgent: new https.Agent({ rejectUnauthorized: false })
 });
 
