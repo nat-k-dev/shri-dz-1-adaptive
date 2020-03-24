@@ -5,8 +5,12 @@ const express = require('express');
 const { getFileContent } = require('./static_pages');
 const { IsStr, IsNum } = require("./server_utils");
 const { FindCommit, GitClone } = require("./git_utils");
+const { Queue } = require('./server_queue');
 require('dotenv').config({path: __dirname + './../.env'});
 
+// Builds queue
+const buildQueue = new Queue();
+runBuildFromQueue(buildQueue);
 
 // build api
 const api = axios.create({
@@ -33,18 +37,18 @@ app.get('/api/settings', async (req, res) => {
         const apiResponse = await api.get('/conf');
         const serverSettings = apiResponse.data.data;
         if (serverSettings) {
-            res.status(200).send({
+            return res.status(200).send({
                 repoName: serverSettings.repoName,
                 buildCommand: serverSettings.buildCommand,
                 mainBranch: serverSettings.mainBranch,
                 period: serverSettings.period
             });
         } else {
-            res.status(500).send({ error: 'No conf settings data found' });
+            return res.status(500).send({ error: 'No conf settings data found' });
         }
     } catch (e) {
-        console.log(e);
-        res.error(e);
+        console.error(e.message);
+        return res.status(e.status).end(e.message);
     }
 });
 
@@ -52,11 +56,11 @@ app.get('/api/settings', async (req, res) => {
 app.post('/api/settings', async (req, res) => {
     try {
         if (!req.body) {
-            throw new Error('Settings was not set in body');
+            throw new Error({message: 'Settings was not set in body', status: 500});
         }
         if (!IsStr(req.body.repoName) || !IsStr(req.body.buildCommand) || 
             !IsStr(req.body.mainBranch) || !IsNum(Number(req.body.period))) {
-                throw new Error('Wrong data type in request');
+                throw new Error({message: 'Wrong data type in request', status: 500});
         }
         const serverSettings = {
             "repoName": req.body.repoName,
@@ -70,10 +74,9 @@ app.post('/api/settings', async (req, res) => {
         // git clone 
         GitClone(req.body.repoName, req.body.mainBranch);
     } catch (e) {
-        console.log(e); 
-        res.error(e);
+        console.error(e.message);
+        return res.status(e.status).end(e.message);
     }
-    
 });
 
 // получить извне список сборок
@@ -92,8 +95,8 @@ app.get('/api/builds', async (req, res) => {
             res.status(500).send({ error: 'No builds found' });
         }
     } catch (e) {
-        console.log(e);
-        res.error(e);
+        console.error(e.message);
+        return res.status(e.status).end(e.message);
     }
 });
 
@@ -104,7 +107,7 @@ app.post('/api/builds/:commitHash', async (req, res) => {
         const buildConfResponse = await api.get('/conf');
         const buildSettings = buildConfResponse.data.data;
         if (!buildSettings) {
-            throw new Error('Build settings are not found');
+            throw new Error({message: 'Build settings are not found', status: 500});
         }
         const { commitMessage, authorName } = await FindCommit(commitHash, buildSettings.mainBranch);
         const commitSettings = {
@@ -116,9 +119,11 @@ app.post('/api/builds/:commitHash', async (req, res) => {
         const apiResponse = await api.post('/build/request', commitSettings);
         console.log(apiResponse);
         res.status(apiResponse.status).send(apiResponse.statusText);
+        // Постановка в очередь на сборку
+        buildQueue.enqueue(commitHash);
     } catch (e) {
-        console.log(e);
-        res.error(e);
+        console.error(e.message);
+        return res.status(e.status).end(e.message);
     }
 });
 
@@ -127,7 +132,7 @@ app.get('/api/builds/:buildId', async (req, res) => {
     try {
         const buildId = req.params.buildId;
         if (!IsStr(buildId)) {
-            throw new Error('Wrong data type in request');
+            throw new Error({message: 'Wrong data type in request', status: 500});
         }
         const params = { buildId: buildId };
         const apiResponse = await api.get('/build/details', { params });
@@ -139,8 +144,8 @@ app.get('/api/builds/:buildId', async (req, res) => {
             res.status(500).send({ error: 'No build found' });
         }
     } catch (e) {
-        console.log(e);
-        res.error(e);
+        console.error(e.message);
+        return res.status(e.status).end(e.message);
     }
 });
 
@@ -161,11 +166,45 @@ app.get('/api/builds/:buildId/logs', async (req, res) => {
             res.status(500).send({ error: 'No build log found' });
         }
     } catch (e) {
-        console.log(e);
-        res.error(e);
+        console.error(e.message);
+        return res.status(e.status).end(e.message);
     }
 });
 
+setInterval(async () => {
+    const newCommits = []; // получить из гита новые коммиты, пока не сделано
+    newCommits.forEach(commitHash => {
+        buildQueue.enqueue(commitHash);
+    });
+}, 60000)
+
+async function runBuildFromQueue() {
+    const commitHash = buildQueue.front();
+    // полупсевдокод:
+    // Получить id билда
+    // TODO
+    // Поставить билду статус Running в свеггере
+    // TODO
+    // Запустить билд-агент
+    // TODO
+    // Поставить билду статус Finished в свеггере
+    // TODO
+    // Удалить из очереди сбилженный билд
+    buildQueue.dequeue();
+
+    if (buildQueue.front()) {
+        setImmediate(runBuildFromQueue);
+    } else {
+        const intervalId = setInterval(() => {
+            if (buildQueue.front()) {
+                clearInterval(intervalId);
+                setImmediate(runBuildFromQueue);
+            }
+        }, 10000);
+
+    }
+};
+runBuildFromQueue();
 
 app.listen(3000);
 console.log('Listening on localhost:3000');
