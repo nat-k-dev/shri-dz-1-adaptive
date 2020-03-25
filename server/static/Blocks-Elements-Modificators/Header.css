@@ -1,0 +1,29 @@
+.Header {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+@media (max-width: 360px) {
+    .Header {
+        padding-top: 12px;
+        padding-bottom: 12px;
+    }    
+}
+
+.Header-Caption {
+    margin-right: 8px;
+}
+
+@media (max-width: 410px) {
+    .Header-Caption {
+        max-width: 220px;
+    }
+}
+
+.Header-Caption_color_title {
+    color: var(--grey-900);
+}
+
+.Header-Caption_color_build {
+    color: var(--black);
+}

@@ -1,0 +1,26 @@
+@import "./constants/fonts.css";
+@import "./constants/border.css";
+@import "./constants/border-radius.css";
+@import "./constants/colors.css";
+@import "./constants/box-shadow.css";
+@import "./constants/margin.css";
+@import "layout.css";
+@import "./Blocks-Elements-Modificators/Button.css";
+@import "./Blocks-Elements-Modificators/Container.css";
+@import "./Blocks-Elements-Modificators/Header.css";
+@import "./Blocks-Elements-Modificators/Footer.css";
+@import "./Blocks-Elements-Modificators/NavLinks.css";
+@import "./Blocks-Elements-Modificators/Main.css";
+@import "./Blocks-Elements-Modificators/Greeting.css";
+@import "./Blocks-Elements-Modificators/Form.css";
+@import "./Blocks-Elements-Modificators/BuildList.css";
+@import "./Blocks-Elements-Modificators/TimeInfo.css";
+@import "./Blocks-Elements-Modificators/BuildStatuses.css";
+@import "./Blocks-Elements-Modificators/Commit.css";
+@import "./Blocks-Elements-Modificators/BuildLog.css";
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}

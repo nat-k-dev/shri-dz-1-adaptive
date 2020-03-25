@@ -1,0 +1,18 @@
+* {
+    --color-nav-link-hovered: var(--red-400);
+}
+
+.NavLinks {
+    display: flex;
+    flex-direction: row;
+}
+
+.NavLinks-Item {
+    margin-right: 12px;
+    margin-top: 8px;
+    cursor: pointer;
+}
+
+.NavLinks-Item:hover {
+    color: var(--color-nav-link-hovered);
+}
