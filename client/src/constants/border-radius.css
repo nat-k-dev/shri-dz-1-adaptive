@@ -1,0 +1,14 @@
+/* скругления */
+:root {
+    /* Базовые */
+    --border-radius-s: 4px;
+    --border-radius-m: 6px;
+    --border-radius-xxl: 100px;
+
+    /* Семантические */
+    --border-radius-button: var(--border-radius-s);
+    --border-radius-input: var(--border-radius-s);
+    --border-radius-build-card: var(--border-radius-m);
+    --border-radius-build-log: var(--border-radius-m);
+    --border-radius-horizontal-scroll: var(--border-radius-xxl);    
+}

@@ -1,0 +1,20 @@
+.Page {
+    min-height: 100vh;
+    display: grid;    
+    grid-template-rows: minmax(max-content, 50px) 1fr minmax(max-content, 32px);
+    grid-template-columns: 1fr;
+    margin: 0;
+    padding: 0;
+}
+
+.Header,
+.Main,
+.Footer {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding-left: 16px;
+    padding-right: 16px;
+}
+
