@@ -7,16 +7,9 @@
 @import "layout.css";
 @import "./Blocks-Elements-Modificators/Button.css";
 @import "./Blocks-Elements-Modificators/Container.css";
-@import "./Blocks-Elements-Modificators/NavLinks.css";
-@import "./Blocks-Elements-Modificators/Main.css";
-@import "./Blocks-Elements-Modificators/Form.css";
 @import "./Blocks-Elements-Modificators/BuildList.css";
 @import "./Blocks-Elements-Modificators/Build.css";
-@import "./Blocks-Elements-Modificators/BuildCard.css";
-@import "./Blocks-Elements-Modificators/TimeInfo.css";
 @import "./Blocks-Elements-Modificators/BuildStatuses.css";
-@import "./Blocks-Elements-Modificators/Commit.css";
-@import "./Blocks-Elements-Modificators/BuildLog.css";
 @import "./Blocks-Elements-Modificators/Icon.css";
 
 * {
