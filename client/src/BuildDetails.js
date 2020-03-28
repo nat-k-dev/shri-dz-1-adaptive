@@ -1,22 +1,11 @@
 import React from 'react';
+import Header from './Header/Header';
+import Footer from './Footer/Footer';
 
 export default function BuildDetails() {
     return (
         <div className="Page Page_font_yandex">
-            <header className="Header">
-                <div className="Container Container_align_headerBuild">
-                    <h1 className="Header-Caption font_size_xxl Header_spaces_h1">philip1967/my-awesome-repo</h1>
-                    <div className="Container_align_header Container_width_buttons">
-                        <button className="Button Button_color_secondary Button_size_s Button_gap_s font_size_s">
-                            <i className="Button-Icon Icon_type_rebuild"></i>             
-                            <div className="Button-Caption">Rebuild</div>
-                        </button>
-                        <button className="Button Button_color_secondary Button_size_xs font_size_s">
-                            <i className="Button-Icon Icon_type_settings"></i>
-                        </button>
-                    </div>
-                </div>
-            </header>
+            <Header details={true} />
 
             <main className="Main">
                 <div className="Container">
@@ -221,15 +210,7 @@ export default function BuildDetails() {
                 </div>
             </main>
 
-            <footer className="Footer font_size_s Footer_spaceTop_s">
-                <div className="Container Container_align_footer">
-                    <div className="NavLinks">
-                        <div className="NavLinks-Item Footer-NavLink">Support</div>
-                        <div className="NavLinks-Item Footer-NavLink">Learning</div>
-                    </div>
-                    <div className="Footer-Copyright">&copy; 2020 Natalia Karaseva</div>
-                </div>
-            </footer>    
+            <Footer />
         </div>        
     );
 }

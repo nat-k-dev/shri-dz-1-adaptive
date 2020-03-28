@@ -1,17 +1,11 @@
 import React from 'react';
+import Header from './Header/Header';
+import Footer from './Footer/Footer';
 
-export default function Settings() {
+export default function StartScreen() {
     return (
           <div className="Page Page_font_yandex">
-              <header className="Header">
-                  <div className="Container Container_align_header">
-                      <h1 className="Header-Caption Header-Caption_color_title font_size_xxl Header_spaces_h1">School CI server</h1>
-                      <button className="Button Button_color_secondary Button_size_s font_size_s">
-                          <i className="Button-Icon Icon_type_settings"></i>
-                          <div className="Button-Caption">Settings</div>
-                      </button>
-                  </div>
-              </header>
+              <Header start={true} />
     
               <main className="Main">
                   <div className="Container Container_align_centralize">
@@ -23,15 +17,7 @@ export default function Settings() {
                   </div>
               </main>
     
-              <footer className="Footer font_size_s Footer_spaceTop_s">
-                  <div className="Container Container_align_footer">
-                      <div className="NavLinks">
-                          <div className="NavLinks-Item Footer-NavLink">Support</div>
-                          <div className="NavLinks-Item Footer-NavLink">Learning</div>
-                      </div>
-                      <div className="Footer-Copyright">&copy; 2020 Natalia Karaseva</div>
-                  </div>
-              </footer>  
+              <Footer />  
           </div>
     );
 };
