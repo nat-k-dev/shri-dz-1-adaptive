@@ -98,7 +98,7 @@ node ./server/server.js
 .Build-Title {
     display: grid;
     grid-gap: 4px;
-    grid-template-columns: 52px 1fr;
+    grid-template-columns: minmax(52px, max-content) 1fr;
     align-items: center;
 }
 ```
