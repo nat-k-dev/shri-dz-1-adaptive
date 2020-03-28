@@ -7,11 +7,8 @@
 @import "layout.css";
 @import "./Blocks-Elements-Modificators/Button.css";
 @import "./Blocks-Elements-Modificators/Container.css";
-@import "./Blocks-Elements-Modificators/Header.css";
-@import "./Blocks-Elements-Modificators/Footer.css";
 @import "./Blocks-Elements-Modificators/NavLinks.css";
 @import "./Blocks-Elements-Modificators/Main.css";
-@import "./Blocks-Elements-Modificators/Greeting.css";
 @import "./Blocks-Elements-Modificators/Form.css";
 @import "./Blocks-Elements-Modificators/BuildList.css";
 @import "./Blocks-Elements-Modificators/Build.css";

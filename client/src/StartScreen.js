@@ -1,6 +1,7 @@
 import React from 'react';
 import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
+import Greeting from './components/Greeting/Greeting';
 
 export default function StartScreen() {
     return (
@@ -9,11 +10,7 @@ export default function StartScreen() {
     
               <main className="Main">
                   <div className="Container Container_align_centralize">
-                      <div className="Greeting">
-                          <i className="Greeting-Icon Icon_type_tools"></i>           
-                          <div className="Greeting-Caption">Configure repository connection and synchronization settings</div>
-                          <button className="Button Button_color_primary Button_size_m font_size_s" onclick="location.href='settings.html'">Open settings</button>
-                      </div>
+                      <Greeting />
                   </div>
               </main>
     

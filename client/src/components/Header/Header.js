@@ -1,5 +1,6 @@
 import React from 'react';
 import classnames from 'classnames';
+import './Header.scss';
 
 export default function Header({start, settings, history, details}) {
     let containerClass = classnames({
