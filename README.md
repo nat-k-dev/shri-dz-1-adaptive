@@ -1,3 +1,12 @@
+# Домашнее задание. React
+
+Решение находится в папке [client](https://github.com/appalse/shri-dz-1-adaptive/tree/react-server-dev/client).
+Там же есть [Readme](https://github.com/appalse/shri-dz-1-adaptive/blob/react-server-dev/client/README.md).
+
+
+
+
+
 # Домашнее задание. Node.js
 
 Версия Node.js 12.13.0
