@@ -6,7 +6,7 @@ import {
   Switch,
   Route
 } from 'react-router-dom';
-import StartScreen from './StartScreen';
+import HomePage from './components/HomePage/HomePage';
 import Settings from './Settings';
 import BuildHistory from './BuildHistory';
 import BuildDetails from './BuildDetails';
@@ -16,17 +16,17 @@ export default function App() {
     <Router>
       <div>
         <Switch>
-          <Route path='/settings'>
+          <Route path='/' exact>
+            <HomePage />
+          </Route>
+          <Route path='/settings' exact>
             <Settings />
           </Route>
-          <Route path='/build_history'>
+          <Route path='/build_history' exact>
             <BuildHistory />
           </Route>
-          <Route path='/build_details'>
+          <Route path='/build_details' exact>
             <BuildDetails />
-          </Route>
-          <Route path='/'>
-            <StartScreen />
           </Route>
         </Switch>
       </div>
