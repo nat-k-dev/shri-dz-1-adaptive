@@ -10,6 +10,8 @@ import HomePage from './components/HomePage/HomePage';
 import Settings from './Settings';
 import BuildHistory from './BuildHistory';
 import BuildDetails from './BuildDetails';
+import StartScreen from './StartScreen';
+
 
 export default function App() {
   return (
@@ -21,6 +23,13 @@ export default function App() {
           </Route>
           <Route path='/settings' exact>
             <Settings />
+          </Route>
+          <Route path='/build/:id' exact>
+            
+          </Route>
+          {/* Для целей отладки оставлены ручки: */}
+          <Route path='/start' exact>
+            <StartScreen />
           </Route>
           <Route path='/build_history' exact>
             <BuildHistory />
