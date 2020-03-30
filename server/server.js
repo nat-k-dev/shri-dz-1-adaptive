@@ -25,12 +25,6 @@ app.use(express.json())
 app.use(express.static(path.resolve(__dirname, 'static')));
 app.get('/favicon.ico', (req, res) => res.status(204));
 
-// отдаем верстку
-app.get('/', (req, res) => { getFileContent(path.resolve(__dirname, './static/start_screen.html'), res); });
-app.get('/settings', (req, res) => { getFileContent(path.resolve(__dirname, './static/settings.html'), res); });
-app.get('/build_history', (req, res) => { getFileContent(path.resolve(__dirname, './static/build_history.html'), res); });
-app.get('/build_details', (req, res) => { getFileContent(path.resolve(__dirname, './static/build_details.html'), res); });
-
 // получить извне сохраненные на сервере настройки через response
 app.get('/api/settings', async (req, res) => {
     try {
