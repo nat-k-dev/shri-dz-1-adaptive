@@ -18,25 +18,13 @@ export default function App() {
     <Router>
       <div>
         <Switch>
-          <Route path='/' exact>
-            <HomePage />
-          </Route>
-          <Route path='/settings' exact>
-            <Settings />
-          </Route>
-          <Route path='/build/:id' exact>
-            
-          </Route>
+          <Route path='/' component={HomePage} exact />
+          <Route path='/settings' component={Settings} exact />
+          <Route path='/build/:id' component={BuildDetails} exact />
           {/* Для целей отладки оставлены ручки: */}
-          <Route path='/start' exact>
-            <StartScreen />
-          </Route>
-          <Route path='/build_history' exact>
-            <BuildHistory />
-          </Route>
-          <Route path='/build_details' exact>
-            <BuildDetails />
-          </Route>
+          <Route path='/start' component={StartScreen} exact />
+          <Route path='/build_history' component={BuildHistory} exact />
+          <Route path='/build_details' component={BuildDetails} exact />
         </Switch>
       </div>
     </Router>
