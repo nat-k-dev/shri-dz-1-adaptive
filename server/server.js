@@ -25,6 +25,17 @@ app.use(express.json())
 app.use(express.static(path.resolve(__dirname, 'static')));
 app.get('/favicon.ico', (req, res) => res.status(204));
 
+function getErrorData(e) {
+    return {
+        status: (e.response && e.response.status) ? 
+                            e.response.status 
+                            : 400,
+        data: (e.response && e.response.data) ?
+                        JSON.stringify(e.response.data)
+                        : e.message
+    };
+}
+
 // получить извне сохраненные на сервере настройки через response
 app.get('/api/settings', async (req, res) => {
     try {
@@ -41,8 +52,8 @@ app.get('/api/settings', async (req, res) => {
             return res.status(500).send({ error: 'No conf settings data found' });
         }
     } catch (e) {
-        console.error(e.message);
-        return res.status(e.status).end(e.message);
+        const errInfo = getErrorData(e);
+        return  res.status(errInfo.status).end(errInfo.data);
     }
 });
 
@@ -68,8 +79,8 @@ app.post('/api/settings', async (req, res) => {
         // git clone 
         GitClone(req.body.repoName, req.body.mainBranch);
     } catch (e) {
-        console.error(e.message);
-        return res.status(e.status).end(e.message);
+        const errInfo = getErrorData(e);
+        return  res.status(errInfo.status).end(errInfo.data);
     }
 });
 
@@ -89,8 +100,8 @@ app.get('/api/builds', async (req, res) => {
             res.status(500).send({ error: 'No builds found' });
         }
     } catch (e) {
-        console.error(e.message);
-        return res.status(e.status).end(e.message);
+        const errInfo = getErrorData(e);
+        return  res.status(errInfo.status).end(errInfo.data);
     }
 });
 
@@ -116,8 +127,8 @@ app.post('/api/builds/:commitHash', async (req, res) => {
         // Постановка в очередь на сборку
         buildQueue.enqueue(commitHash);
     } catch (e) {
-        console.error(e.message);
-        return res.status(e.status).end(e.message);
+        const errInfo = getErrorData(e);
+        return  res.status(errInfo.status).end(errInfo.data);
     }
 });
 
@@ -130,16 +141,16 @@ app.get('/api/builds/:buildId', async (req, res) => {
         }
         const params = { buildId: buildId };
         const apiResponse = await api.get('/build/details', { params });
-        const buildInfo = apiResponse.data.data;
-        console.log(buildInfo);
-        if (buildInfo) {
+        if (apiResponse.data && apiResponse.data.data) {
+            const buildInfo = apiResponse.data.data;
+            console.log(buildInfo);
             res.status(200).send(buildInfo);
         } else {
             res.status(500).send({ error: 'No build found' });
         }
     } catch (e) {
-        console.error(e.message);
-        return res.status(e.status).end(e.message);
+        const errInfo = getErrorData(e);
+        return  res.status(errInfo.status).end(errInfo.data);
     }
 });
 
@@ -160,8 +171,8 @@ app.get('/api/builds/:buildId/logs', async (req, res) => {
             res.status(500).send({ error: 'No build log found' });
         }
     } catch (e) {
-        console.error(e.message);
-        return res.status(e.status).end(e.message);
+        const errInfo = getErrorData(e);
+        return  res.status(errInfo.status).end(errInfo.data);
     }
 });
 
