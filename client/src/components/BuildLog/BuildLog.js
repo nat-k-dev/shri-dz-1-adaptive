@@ -1,10 +1,11 @@
 import React from 'react';
 import './BuildLog.scss';
 
-export default function BuildLog() {
+export default function BuildLog({logText}) {
     return (
         <div className="BuildLog font_size_xxs">
-            <pre>{`Build 'Stack Exchange Network :: New York :: SENetwork - Dev' #21007
+            <pre>{logText}</pre>
+{/*}            <pre>{`Build 'Stack Exchange Network :: New York :: SENetwork - Dev' #21007
                 Started 'Wed Apr 27 23:54:04 UTC 2016' on 'NY-WEB05' by 'Git'
                 Finished 'Wed Apr 27 23:56:21 UTC 2016' with status 'NORMAL Success'
                 TeamCity URL https://build/viewLog.html?buildId=477326&buildTypeId=StackExchangeNetwork_NewYork_SENetworkDev 
@@ -163,6 +164,7 @@ export default function BuildLog() {
                 [23:54:20] :		 [VCS Root: Gitlab - Stack Exchange Network] Checking out files:  99% (15829/15988)   
                 [23:54:20] :		 [VCS Root: Gitlab - Stack Exchange Network] Checking out files: 100% (15988/15988)   
                 [23:54:20] :		 [VCS Root: Gitlab - Stack Exchange Network] Checking out files: 100% (15988/15988), done.`}</pre>
+*/}
         </div>
     );
 }
