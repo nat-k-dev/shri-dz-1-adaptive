@@ -18,9 +18,9 @@ export default function Form() {
             </div>
 
             <div className="Form-Item_align_vertical Form-Item_spaceBottom_m">
-                <label className="Form-Label Form-Item_spaceBottom_xs">Build command</label>
+                <label className="Form-Label Form-Item_spaceBottom_xs">Build command<span className="Form-Label_color_mandatory">*</span></label>
                 <div className="Input">
-                    <input className="Form-Input" type="text" placeholder="npm ci && npm run build" />
+                    <input className="Form-Input" type="text" placeholder="npm ci && npm run build" required />
                     <i className="Input-DeleteTextIcon Icon_type_deleteText"></i>
                 </div>
             </div>
