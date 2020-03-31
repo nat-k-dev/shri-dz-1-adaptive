@@ -143,7 +143,6 @@ app.get('/api/builds/:buildId', async (req, res) => {
         const apiResponse = await api.get('/build/details', { params });
         if (apiResponse.data && apiResponse.data.data) {
             const buildInfo = apiResponse.data.data;
-            console.log(buildInfo);
             res.status(200).send(buildInfo);
         } else {
             res.status(500).send({ error: 'No build found' });
@@ -163,9 +162,8 @@ app.get('/api/builds/:buildId/logs', async (req, res) => {
         }
         const params = { buildId: buildId };
         const apiResponse = await api.get('/build/log', { params });
-        const buildLog = apiResponse.data.data;
-        console.log(buildLog);
-        if (buildLog) {
+        if (apiResponse.data) {
+            const buildLog = apiResponse.data;
             res.status(200).send(buildLog);
         } else {
             res.status(500).send({ error: 'No build log found' });
