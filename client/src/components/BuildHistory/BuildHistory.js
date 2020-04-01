@@ -1,7 +1,7 @@
 import React from 'react';
-import Header from './components/Header/Header';
-import Footer from './components/Footer/Footer';
-import BuildCard from './components/BuildCard/BuildCard';
+import Header from '../Header/Header';
+import Footer from '../Footer/Footer';
+import BuildCard from '../BuildCard/BuildCard';
 
 export default function BuildHistory({history}) {
     const buildsData = [

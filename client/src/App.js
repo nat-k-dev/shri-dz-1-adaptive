@@ -7,10 +7,10 @@ import {
   Route
 } from 'react-router-dom';
 import HomePage from './components/HomePage/HomePage';
-import Settings from './Settings';
-import BuildHistory from './BuildHistory';
-import BuildDetails from './BuildDetails';
-import StartScreen from './StartScreen';
+import Settings from './components/Settings/Settings';
+import BuildHistory from './components/BuildHistory/BuildHistory';
+import BuildDetails from './components/BuildDetails/BuildDetails';
+import StartScreen from './components/StartScreen/StartScreen';
 
 
 export default function App() {

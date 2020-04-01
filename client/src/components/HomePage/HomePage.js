@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import StartScreen from './../../StartScreen';
-import BuildHistory from './../../BuildHistory';
+import StartScreen from '../StartScreen/StartScreen';
+import BuildHistory from '../BuildHistory/BuildHistory';
 import LoaderAnimation from './../LoaderAnimation/LoaderAnimation';
 
 // функция вызова бэкенда, чтобы узнать, заданы ли settings на сервере

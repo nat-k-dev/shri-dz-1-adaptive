@@ -1,7 +1,7 @@
 import React from 'react';
-import Header from './components/Header/Header';
-import Footer from './components/Footer/Footer';
-import Form from './components/Form/Form';
+import Header from '../Header/Header';
+import Footer from '../Footer/Footer';
+import Form from '../Form/Form';
 
 export default function Settings() {
     return (

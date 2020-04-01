@@ -1,9 +1,9 @@
 import React, {useState} from 'react';
-import Header from './components/Header/Header';
-import Footer from './components/Footer/Footer';
-import BuildCard from './components/BuildCard/BuildCard';
-import BuildLog from './components/BuildLog/BuildLog';
-import LoaderAnimation from './components/LoaderAnimation/LoaderAnimation';
+import Header from '../Header/Header';
+import Footer from '../Footer/Footer';
+import BuildCard from '../BuildCard/BuildCard';
+import BuildLog from '../BuildLog/BuildLog';
+import LoaderAnimation from '../LoaderAnimation/LoaderAnimation';
 
 // функция вызова бэкенда, чтобы получить билд лог
 async function callBackendAPIBuildLog(buildId) {

@@ -1,7 +1,7 @@
 import React from 'react';
-import Header from './components/Header/Header';
-import Footer from './components/Footer/Footer';
-import Greeting from './components/Greeting/Greeting';
+import Header from '../Header/Header';
+import Footer from '../Footer/Footer';
+import Greeting from '../Greeting/Greeting';
 
 export default function StartScreen({history}) {
     return (
