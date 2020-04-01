@@ -10,9 +10,7 @@ async function GitClone(repoName, mainBranch) {
         console.log('deleted paths: ', deletedPaths);
         const { stdout, stderr } = await exec('git clone ' + repoName + ' ' + repoFolder);
         console.log('git clone stdout:', stdout);
-        if (stderr.length > 0) {
-            throw new Error(stderr);
-        }
+        console.log('git clone stderr:', stderr);
         await exec('cd ' + repoFolder + ' && git checkout ' + mainBranch);
         console.log('Repository cloning is finished. Checkout branch');
     } catch(e) {

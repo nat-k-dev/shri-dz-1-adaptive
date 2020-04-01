@@ -2,6 +2,7 @@ const path = require('path');
 const axios = require('axios');
 const https = require('https');
 const express = require('express');
+const cors = require('cors');
 const { getFileContent } = require('./static_pages');
 const { IsStr, IsNum } = require("./server_utils");
 const { FindCommit, GitClone } = require("./git_utils");
@@ -21,9 +22,11 @@ const api = axios.create({
 
 // Express.js
 const app = express();
-app.use(express.json())
+app.use(express.json());
 app.use(express.static(path.resolve(__dirname, 'static')));
 app.get('/favicon.ico', (req, res) => res.status(204));
+app.use(cors());
+
 
 function getErrorData(e) {
     return {
@@ -59,6 +62,7 @@ app.get('/api/settings', async (req, res) => {
 
 // сохранить новые настройки из request 
 app.post('/api/settings', async (req, res) => {
+    console.log('POST /api/settings');
     try {
         if (!req.body) {
             throw new Error({message: 'Settings was not set in body', status: 500});
@@ -107,6 +111,7 @@ app.get('/api/builds', async (req, res) => {
 
 // добавить сборку с commitHash в очередь сборок
 app.post('/api/builds/:commitHash', async (req, res) => {
+    console.log('POST /api/builds/:commitHash');
     try {
         const commitHash = req.params.commitHash;
         const buildConfResponse = await api.get('/conf');
@@ -134,6 +139,7 @@ app.post('/api/builds/:commitHash', async (req, res) => {
 
 // получить извне информацию о сборке с buildId
 app.get('/api/builds/:buildId', async (req, res) => {
+    console.log('GET /api/builds/:buildId');
     try {
         const buildId = req.params.buildId;
         if (!IsStr(buildId)) {
