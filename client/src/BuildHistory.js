@@ -15,7 +15,7 @@ export default function BuildHistory() {
 
     return (
         <div className="Page Page_font_yandex">
-            <Header history={true} />
+            <Header buildHistory={true} />
 
             <main className="Main">
                 <div className="Container">
