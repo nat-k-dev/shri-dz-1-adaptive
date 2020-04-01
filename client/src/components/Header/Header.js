@@ -11,6 +11,7 @@ export default function Header({start, settings, buildHistory, details, history}
     });
     let buttonIconClass = classnames({
         'Button-Icon': true,
+        'Icon_type_settings': start,
         'Icon_type_build': buildHistory,
         'Icon_type_rebuild': details
     });
