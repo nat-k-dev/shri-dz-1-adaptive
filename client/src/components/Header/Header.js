@@ -4,12 +4,12 @@ import './Header.scss';
 
 
 export default function Header({start, settings, buildHistory, details, history}) {
-    let containerClass = classnames({
+    const containerClass = classnames({
         'Container': true,
         'Container_align_header': start,
         'Container_align_headerBuild': buildHistory || details
     });
-    let buttonIconClass = classnames({
+    const buttonIconClass = classnames({
         'Button-Icon': true,
         'Icon_type_settings': start,
         'Icon_type_build': buildHistory,

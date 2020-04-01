@@ -14,7 +14,6 @@ async function callBackendAPI() {
 };
 
 export default function HomePage({history}) {
-    console.log('HomePage function component');
     // пока нет ответа сервера, то показываем анимацию
     const [hasResponse, setHasResponse] = useState(false);
     // если нет настроек, то показываем страницу StartScreen, иначе страницу со списком билдов
