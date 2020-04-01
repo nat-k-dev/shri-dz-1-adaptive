@@ -36,7 +36,7 @@ function convertDuration(nmb) {
     return '0 ч 0 мин';
 }
 
-export default function BuildDetails({match}) {
+export default function BuildDetails({match, history}) {
     // отправили запрос на сервер. Нужно, чтобы не отправлять повторяющиеся запросы
     const [hasRequest, setHasRequest] = useState(false);
     // пока нет ответа сервера, то показываем анимацию
@@ -117,7 +117,7 @@ export default function BuildDetails({match}) {
 
     return (
         <div className="Page Page_font_yandex">
-            <Header details={true} />
+            <Header details={true}  history={history} />
 
             <main className="Main">
                 <div className="Container">

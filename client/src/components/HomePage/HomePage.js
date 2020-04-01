@@ -16,7 +16,7 @@ async function callBackendAPI() {
     return body;
 };
 
-export default function HomePage() {
+export default function HomePage({history}) {
     console.log('HomePage function component');
     // пока нет ответа сервера, то показываем анимацию
     const [hasResponse, setHasResponse] = useState(false);
@@ -43,7 +43,7 @@ export default function HomePage() {
     return (
         <>
             { !hasResponse ? (<LoaderAnimation />) : 
-                (hasSettings ? (<BuildHistory />) : (<StartScreen />)) 
+                (hasSettings ? (<BuildHistory />) : (<StartScreen history={history} />)) 
             }
         </>
     );

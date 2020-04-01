@@ -3,7 +3,7 @@ import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
 import BuildCard from './components/BuildCard/BuildCard';
 
-export default function BuildHistory() {
+export default function BuildHistory({history}) {
     const buildsData = [
         <BuildCard key='0' buildId={'Z1378'} buildCaption={'Zadd documentation for postgres scaler'} branchName={'Zmaster'} commitHash={'ZZ9f0b9'} authorName={'ZZPhilip Kirkorov'} date={'10 янв'} time={'01:16'} duration={'2 ч 40 мин'} />,
         <BuildCard key='1' buildId={'Z1378'} buildCaption={'Zadd documentation for postgres scaler'} branchName={'Zmaster'} commitHash={'ZZ9f0b9'} authorName={'ZZPhilip Kirkorov'} date={'10 янв'} time={'01:16'} duration={'2 ч 40 мин'} />,
@@ -15,7 +15,7 @@ export default function BuildHistory() {
 
     return (
         <div className="Page Page_font_yandex">
-            <Header buildHistory={true} />
+            <Header buildHistory={true}  history={history} />
 
             <main className="Main">
                 <div className="Container">

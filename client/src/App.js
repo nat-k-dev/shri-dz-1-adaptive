@@ -16,7 +16,6 @@ import StartScreen from './StartScreen';
 export default function App() {
   return (
     <Router>
-      <div>
         <Switch>
           <Route path='/' component={HomePage} exact />
           <Route path='/settings' component={Settings} exact />
@@ -26,7 +25,6 @@ export default function App() {
           <Route path='/build_history' component={BuildHistory} exact />
           <Route path='/build_details' component={BuildDetails} exact />
         </Switch>
-      </div>
     </Router>
   );
 }
