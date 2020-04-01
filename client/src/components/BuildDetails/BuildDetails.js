@@ -137,7 +137,9 @@ export default function BuildDetails({match, history}) {
                                         : (<div>Build details were not found. Probably, wrong build Id in url: {buildId}</div>)
                                 }
                             </ul>
-                            <BuildLog logText={buildLog} />
+                            { !hasBuildLog ? (<LoaderAnimation />) : 
+                                (<BuildLog logText={buildLog} />)
+                            }
                         </>
                         ) 
                     }

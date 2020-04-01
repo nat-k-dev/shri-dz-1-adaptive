@@ -1,9 +1,10 @@
 import React from 'react';
 import Loader from 'react-loader-spinner';
+import './LoaderAnimation.scss';
 
 export default function LoaderAnimation() {
     return (
-        <Loader style={{height: '100vh', display: 'flex', justifyContent: 'center', alignItems: 'center'}} 
+        <Loader className='LoaderAnimation' 
             type="Oval"
             color="#FF9A00"
             height={50}
