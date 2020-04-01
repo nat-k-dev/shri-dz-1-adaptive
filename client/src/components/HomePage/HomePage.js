@@ -6,9 +6,6 @@ import LoaderAnimation from './../LoaderAnimation/LoaderAnimation';
 // функция вызова бэкенда, чтобы узнать, заданы ли settings на сервере
 async function callBackendAPI() {
     const response = await fetch('/api/settings');
-    // эмуляция долгого ответа сервера, чтобы показать анимацию LoaderAnimation
-    const p = new Promise(resolve => { setTimeout(resolve, 2000); });
-    await p;
     const body = await response.json();
     if (response.status !== 200 && response.status !== 500) {
         throw Error(body.message);
