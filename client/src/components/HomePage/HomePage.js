@@ -43,7 +43,7 @@ export default function HomePage({history}) {
     return (
         <>
             { !hasResponse ? (<LoaderAnimation />) : 
-                (hasSettings ? (<BuildHistory />) : (<StartScreen history={history} />)) 
+                (hasSettings ? (<BuildHistory history={history} />) : (<StartScreen history={history} />)) 
             }
         </>
     );
