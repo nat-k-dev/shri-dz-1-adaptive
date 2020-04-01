@@ -139,16 +139,6 @@
     }
 }
 
-.Input {
-    position: relative;
-}
-
-.Input-DeleteTextIcon {
-    position: absolute;
-    right: 10px;
-    top: 10px;
-}
-
 .Form-Input:placeholder-shown ~ .Input-DeleteTextIcon {
     display: none;
 }
