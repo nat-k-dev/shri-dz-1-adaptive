@@ -21,16 +21,18 @@ async function callBackendAPI(state) {
     }
 };
 
-const initialState = {
-    repoName: '',
-    buildCommand: 'npm build',
-    mainBranch: 'master',
-    period: '10'
-}
 
 export default function Form({history}) {
-    const [state, setState] = useState(initialState);
     const [disableButton, setDisableButton] = useState(false);
+
+    const initialState = {
+        repoName: '',
+        buildCommand: 'npm build',
+        mainBranch: 'master',
+        period: '10'
+    };
+    const [state, setState] = useState(initialState);
+
     function handleSubmitClick(event) {
         event.preventDefault();
         callBackendAPI(state)

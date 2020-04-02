@@ -74,6 +74,10 @@
     background-color: var(--bg-color-btn-primary-hovered);
 }
 
+.Button_color_primary:disabled:hover {
+    background-color: var(--bg-color-btn-disabled);
+}
+
 .Button_color_primary:focus {
     box-shadow: inset 0 0 0 var(--border-width-button) var(--border-color-btn-primary-focused);
 }
@@ -86,12 +90,15 @@
     background-color: var(--bg-color-btn-secondary-hovered);
 }
 
-.Button_color_secondary:focus {
-    box-shadow: inset 0 0 0 var(--border-width-button) var(--border-color-btn-secondary-focused);
+.Button_color_primary:disabled,
+.Button_color_primary:disabled:hover,
+.Button_color_secondary:disabled,
+.Button_color_secondary:disabled:hover {
+    background-color: var(--bg-color-btn-disabled);
 }
 
-.Button_disabled {
-    background-color: var(--bg-color-btn-disabled);
+.Button_color_secondary:focus {
+    box-shadow: inset 0 0 0 var(--border-width-button) var(--border-color-btn-secondary-focused);
 }
 
 .Button-Caption {
