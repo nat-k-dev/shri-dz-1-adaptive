@@ -97,8 +97,8 @@ app.get('/api/builds', async (req, res) => {
                 limit: req.params.limit || 25
             }
         });
-        const buildsArray = apiResponse.data.data;
-        if (buildsArray) {
+        if (apiResponse && apiResponse.data && apiResponse.data.data) {
+            const buildsArray = apiResponse.data.data;
             res.status(200).send(buildsArray);
         } else {
             res.status(500).send({ error: 'No builds found' });
