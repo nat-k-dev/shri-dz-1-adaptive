@@ -4,6 +4,7 @@ import Footer from '../Footer/Footer';
 import BuildCard from '../BuildCard/BuildCard';
 import BuildLog from '../BuildLog/BuildLog';
 import LoaderAnimation from '../LoaderAnimation/LoaderAnimation';
+import { convertDateTime, convertDuration } from './../../utils';
 
 // функция вызова бэкенда, чтобы получить билд лог
 async function callBackendAPIBuildLog(buildId) {
@@ -25,16 +26,6 @@ async function callBackendAPIBuildDetails(buildId) {
     return body;
 };
 
-function convertDateTime(str) {
-    return {
-        time: '-',
-        date: '-'
-    }
-}
-
-function convertDuration(nmb) {
-    return '0 ч 0 мин';
-}
 
 export default function BuildDetails({match, history}) {
     // отправили запрос на сервер. Нужно, чтобы не отправлять повторяющиеся запросы
