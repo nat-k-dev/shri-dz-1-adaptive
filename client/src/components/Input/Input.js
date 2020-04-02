@@ -1,12 +1,17 @@
 import React, { useState } from 'react';
 import './Input.scss';
 
-export default function Input({id, placeholder, isRequired, hasDeleteIcon, onChange, additionalClasses}) {
+export default function Input({id, placeholder, isRequired, hasDeleteIcon, onChange, additionalClasses, validate}) {
 
     const inputClass = additionalClasses ? ('Form-Input ' + additionalClasses) : 'Form-Input';
 
     const [state, setState] = useState('');
     function handleChange(event) {
+        if (validate && !validate(event.target.value)) {
+            setState('');
+            onChange(id, '');
+            return;
+        }
         setState(event.target.value);
         onChange(id, event.target.value);
     };

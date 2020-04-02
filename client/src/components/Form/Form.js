@@ -52,6 +52,9 @@ export default function Form({history}) {
     function handleInputChange(fieldId, fieldValue) {
         setState({...state, [fieldId]: fieldValue});
     }
+    function isNumber(fieldValue) {
+        return !isNaN(Number(fieldValue));
+    }
     return (
         <form className="Form" onSubmit={handleSubmitClick} method="post">
             <div className="Form-Item_align_vertical Form-Item_verticalSpace_l">
@@ -76,7 +79,7 @@ export default function Form({history}) {
 
             <div className="Form-Item_align_horizontal Form-Item_spaceBottom_xl">
                 <label className="Form-Label Form-Item_spaceRight_s">Synchronize every </label>
-                <Input id='period' placeholder={'10'} isRequired={false} hasDeleteIcon={false} onChange={handleInputChange} additionalClasses='Form-InputNumber Form-Input_size_small Form-Item_spaceRight_s' />
+                <Input id='period' placeholder={'10'} isRequired={false} hasDeleteIcon={false} onChange={handleInputChange} validate={isNumber} additionalClasses='Form-InputNumber Form-Input_size_small Form-Item_spaceRight_s' />
                 <label className="Form-Label">minutes</label>
             </div>
 
