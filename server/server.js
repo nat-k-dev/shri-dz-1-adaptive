@@ -78,10 +78,10 @@ app.post('/api/settings', async (req, res) => {
             "period": Number(req.body.period)
         }
         const apiResponse = await api.post('/conf', serverSettings);
-        res.status(apiResponse.status).send(apiResponse.statusText);
         
         // git clone 
-        GitClone(req.body.repoName, req.body.mainBranch);
+        await GitClone(req.body.repoName, req.body.mainBranch);
+        return res.status(apiResponse.status).send(apiResponse.statusText);
     } catch (e) {
         const errInfo = getErrorData(e);
         return  res.status(errInfo.status).end(errInfo.data);
@@ -128,9 +128,11 @@ app.post('/api/builds/:commitHash', async (req, res) => {
         }
         const apiResponse = await api.post('/build/request', commitSettings);
         console.log(apiResponse);
-        res.status(apiResponse.status).send(apiResponse.statusText);
+        
         // Постановка в очередь на сборку
         buildQueue.enqueue(commitHash);
+
+        res.status(apiResponse.status).send(apiResponse.statusText);
     } catch (e) {
         const errInfo = getErrorData(e);
         return  res.status(errInfo.status).end(errInfo.data);
