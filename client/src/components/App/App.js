@@ -1,16 +1,16 @@
 import React from 'react';
-import './App.css';
-import './style.css';
+import './App.scss';
+import './../../style.css';
 import {
   BrowserRouter as Router,
   Switch,
   Route
 } from 'react-router-dom';
-import HomePage from './components/HomePage/HomePage';
-import Settings from './components/Settings/Settings';
-import BuildHistory from './components/BuildHistory/BuildHistory';
-import BuildDetails from './components/BuildDetails/BuildDetails';
-import StartScreen from './components/StartScreen/StartScreen';
+import HomePage from '../HomePage/HomePage';
+import Settings from '../Settings/Settings';
+import BuildHistory from '../BuildHistory/BuildHistory';
+import BuildDetails from '../BuildDetails/BuildDetails';
+import StartScreen from '../StartScreen/StartScreen';
 
 
 export default function App() {
