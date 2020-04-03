@@ -21,8 +21,17 @@ function convertDateTime(str) {
     }
 }
 
+function msToTime(duration) {
+    //const milliseconds = parseInt((duration%1000)/100)
+    //const seconds = parseInt((duration/1000)%60);
+    let minutes = parseInt((duration/(1000*60))%60);
+    let hours = parseInt((duration/(1000*60*60))%24);
+
+    return hours + ' ч ' + minutes + ' мин';
+}
+
 function convertDuration(nmb) {
-    return '0 ч 0 мин';
+    return msToTime(nmb);
 }
 
 module.exports = {
