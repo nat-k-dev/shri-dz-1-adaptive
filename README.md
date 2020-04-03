@@ -101,7 +101,7 @@ node ./server/server.js
 .Build-Info {
     display: grid; 
     grid-gap: 8px; 
-    grid-template-rows: 20px min-content; 
+    grid-template-rows: minmax(20px, min-content) min-content; 
 }
 
 .Build-Title {
