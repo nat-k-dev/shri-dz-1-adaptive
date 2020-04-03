@@ -117,6 +117,7 @@ export default function BuildDetails({match, history}) {
                             <ul className="BuildList font_size_s">
                                 { hasDetails ? 
                                         (<BuildCard 
+                                            keyProp={details.buildNumber} 
                                             buildId={details.buildNumber} 
                                             buildCaption={details.commitMessage} 
                                             branchName={details.branchName} 

@@ -4,7 +4,7 @@ import TimeInfo from './../TimeInfo/TimeInfo';
 import './BuildCard.scss';
 import classnames from 'classnames';
 
-export default function BuildCard({buildId, buildCaption, branchName, commitHash, authorName, date, time, duration, needAction}) {
+export default function BuildCard({keyProp, buildId, buildCaption, branchName, commitHash, authorName, date, time, duration, needAction}) {
     const buildCardClass = classnames({
         'BuildCard': true,
         'Build-Item': true, 
@@ -12,7 +12,7 @@ export default function BuildCard({buildId, buildCaption, branchName, commitHash
         'Build-Item_action_no': !needAction
     });
     return (
-        <li className={buildCardClass}>
+        <li className={buildCardClass} key={keyProp}>
             <div className="Build-Icon"></div>
             <div className="Build-Details Build-Details_align_compact">
                 <div className="Build-Info">

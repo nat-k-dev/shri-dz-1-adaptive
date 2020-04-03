@@ -27,15 +27,14 @@ export default function BuildHistory({history}) {
     if (!hasRequest) {
         callBackendAPIBuild()
             .then(buildsList => {
-                console.log('build details response: ', buildsList);
-                
                 if (!hasResponse) {
                     setBuilds(buildsList.map(build => {
                         const start = build.start ? convertDateTime(build.start) : {time: '-', date: '-'};
                         const duration = build.duration ? convertDuration(build.duration) : '0 ч 0 мин';
                         return (
-                            <Link to={'/build/' + build.id} style={{ textDecoration: 'none' }}>
-                                <BuildCard  key={build.buildNumber} 
+                            <Link to={'/build/' + build.id} style={{ textDecoration: 'none' }} key={build.buildNumber}>
+                                <BuildCard 
+                                        keyProp={build.buildNumber} 
                                         buildId={build.id} 
                                         buildCaption={build.commitMessage} 
                                         branchName={build.branchName} 
