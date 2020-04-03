@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './Input.scss';
 
+
 export default function Input({id, placeholder, isRequired, hasDeleteIcon, onChange, additionalClasses, validate}) {
 
     const inputClass = additionalClasses ? ('Form-Input ' + additionalClasses) : 'Form-Input';
@@ -15,6 +16,12 @@ export default function Input({id, placeholder, isRequired, hasDeleteIcon, onCha
         setState(event.target.value);
         onChange(id, event.target.value);
     };
+
+    function handleDeleteTextClick(event) {
+        event.preventDefault();
+        setState('');
+    }
+    
     return (
         <div className="Input">
             { isRequired ? 
@@ -22,7 +29,7 @@ export default function Input({id, placeholder, isRequired, hasDeleteIcon, onCha
                 (<input className={inputClass} type="text" value={state} onChange={handleChange} placeholder={placeholder}  />)
             }
             { hasDeleteIcon && 
-                <i className="Input-DeleteTextIcon Icon_type_deleteText"></i>
+                <button onClick={handleDeleteTextClick} className="Input-DeleteTextIcon Icon_type_deleteText"></button>
             }
         </div>
     );

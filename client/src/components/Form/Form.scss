@@ -139,6 +139,6 @@
     }
 }
 
-.Form-Input:placeholder-shown ~ .Input-DeleteTextIcon {
+.Form-Input:placeholder-shown ~ button.Input-DeleteTextIcon {
     display: none;
 }
