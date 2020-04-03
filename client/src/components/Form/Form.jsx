@@ -17,7 +17,8 @@ async function callBackendAPI(state) {
         })
     });
     if (response.status !== 200) {
-        throw Error(response);
+        const body = await response.json();
+        return body;
     }
 };
 
@@ -37,7 +38,9 @@ export default function Form({history}) {
         event.preventDefault();
         callBackendAPI(state)
             .then(res => {
-                console.log('server response: ', res);
+                if (res && res.status === 500) {
+                    alert(res.data);
+                } 
             })
             .catch(err => {
                 console.log('catch in callBackendAPI: ', err);
