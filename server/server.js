@@ -32,7 +32,7 @@ function getErrorData(e) {
     return {
         status: (e.response && e.response.status) ? 
                             e.response.status 
-                            : 400,
+                            : 500,
         data: (e.response && e.response.data) ?
                         JSON.stringify(e.response.data)
                         : e.message
@@ -78,13 +78,13 @@ app.post('/api/settings', async (req, res) => {
             "period": Number(req.body.period)
         }
         const apiResponse = await api.post('/conf', serverSettings);
-        
         // git clone 
         await GitClone(req.body.repoName, req.body.mainBranch);
         return res.status(apiResponse.status).send(apiResponse.statusText);
     } catch (e) {
         const errInfo = getErrorData(e);
-        return  res.status(errInfo.status).end(errInfo.data);
+        console.log('errInfo: ', errInfo);
+        return  res.status(errInfo.status).send(errInfo);
     }
 });
 
