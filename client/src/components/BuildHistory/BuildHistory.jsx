@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from "react-router-dom";
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 import BuildCard from '../BuildCard/BuildCard';
@@ -14,7 +15,6 @@ async function callBackendAPIBuild() {
     }
     return body;
 };
-
 
 export default function BuildHistory({history}) {
     // отправили запрос на сервер. Нужно, чтобы не отправлять повторяющиеся запросы
@@ -34,7 +34,8 @@ export default function BuildHistory({history}) {
                         const start = build.start ? convertDateTime(build.start) : {time: '-', date: '-'};
                         const duration = build.duration ? convertDuration(build.duration) : '0 ч 0 мин';
                         return (
-                            <BuildCard  key={build.buildNumber} 
+                            <Link to={'/build/' + build.id} style={{ textDecoration: 'none' }}>
+                                <BuildCard  key={build.buildNumber} 
                                         buildId={build.id} 
                                         buildCaption={build.commitMessage} 
                                         branchName={build.branchName} 
@@ -42,15 +43,12 @@ export default function BuildHistory({history}) {
                                         authorName={build.authorName} 
                                         date={start.date} 
                                         time={start.time} 
-                                        duration={duration} />
+                                        duration={duration}
+                                        needAction={true} />
+                            </Link>
                         );
                     }));
                     
-                    /*setBuilds({
-                        status: res.status,
-                        start: start,
-                        duration: duration
-                    });*/
                     setHasResponse(true);
                 }
             })

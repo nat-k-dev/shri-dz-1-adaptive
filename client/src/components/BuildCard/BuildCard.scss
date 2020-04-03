@@ -21,6 +21,7 @@
 
 .Build-Item:hover {
     box-shadow: var(--box-shadow-build-card-hovered);
+    cursor: pointer;
 }
 
 .Build-Item.Build-Item_action_no:hover {
