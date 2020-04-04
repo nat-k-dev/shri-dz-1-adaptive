@@ -27,6 +27,22 @@ app.use(express.static(path.resolve(__dirname, 'static')));
 app.get('/favicon.ico', (req, res) => res.status(204));
 app.use(cors());
 
+/* Список доступных ручек:
+    get '/api/settings'
+    post '/api/settings' 
+        body:{"repoName": string,
+                "buildCommand": string,
+                "mainBranch": string,
+                "period": string}
+    get '/api/builds' 
+            header.params: offset, limit
+    post '/api/builds/:commitHash'
+            url-params: commitHash
+    get '/api/builds/:buildId'
+            url-params: buildId
+    get '/api/builds/:buildId/logs'
+            url-params: buildId
+*/
 
 function getErrorData(e) {
     return {
@@ -56,7 +72,8 @@ app.get('/api/settings', async (req, res) => {
         }
     } catch (e) {
         const errInfo = getErrorData(e);
-        return  res.status(errInfo.status).end(errInfo.data);
+        console.log('errInfo: ', errInfo);
+        return res.status(errInfo.status).send(errInfo);
     }
 });
 
@@ -77,14 +94,18 @@ app.post('/api/settings', async (req, res) => {
             "mainBranch": req.body.mainBranch,
             "period": Number(req.body.period)
         }
-        const apiResponse = await api.post('/conf', serverSettings);
         // git clone 
         await GitClone(req.body.repoName, req.body.mainBranch);
+        const deleteResponse = await api.delete('/conf');
+        if (deleteResponse.status !== 200) {
+            throw new Error({message: 'Error while deleting repository settings', status: deleteResponse.status});
+        }
+        const apiResponse = await api.post('/conf', serverSettings);
         return res.status(apiResponse.status).send(apiResponse.statusText);
     } catch (e) {
         const errInfo = getErrorData(e);
         console.log('errInfo: ', errInfo);
-        return  res.status(errInfo.status).send(errInfo);
+        return res.status(errInfo.status).send(errInfo);
     }
 });
 
@@ -105,7 +126,8 @@ app.get('/api/builds', async (req, res) => {
         }
     } catch (e) {
         const errInfo = getErrorData(e);
-        return  res.status(errInfo.status).end(errInfo.data);
+        console.log('errInfo: ', errInfo);
+        return res.status(errInfo.status).send(errInfo);
     }
 });
 
@@ -119,7 +141,7 @@ app.post('/api/builds/:commitHash', async (req, res) => {
         if (!buildSettings) {
             throw new Error({message: 'Build settings are not found', status: 500});
         }
-        const { commitMessage, authorName } = await FindCommit(commitHash, buildSettings.mainBranch);
+        const { commitMessage, authorName } = await FindCommit(commitHash.substring(0, 7), buildSettings.mainBranch);
         const commitSettings = {
             "commitMessage": commitMessage,
             "commitHash": commitHash,
@@ -127,7 +149,6 @@ app.post('/api/builds/:commitHash', async (req, res) => {
             "authorName": authorName
         }
         const apiResponse = await api.post('/build/request', commitSettings);
-        console.log(apiResponse);
         
         // Постановка в очередь на сборку
         buildQueue.enqueue(commitHash);
@@ -135,7 +156,8 @@ app.post('/api/builds/:commitHash', async (req, res) => {
         res.status(apiResponse.status).send(apiResponse.statusText);
     } catch (e) {
         const errInfo = getErrorData(e);
-        return  res.status(errInfo.status).end(errInfo.data);
+        console.log('errInfo: ', errInfo);
+        return res.status(errInfo.status).send(errInfo);
     }
 });
 
@@ -157,7 +179,8 @@ app.get('/api/builds/:buildId', async (req, res) => {
         }
     } catch (e) {
         const errInfo = getErrorData(e);
-        return  res.status(errInfo.status).end(errInfo.data);
+        console.log('errInfo: ', errInfo);
+        return res.status(errInfo.status).send(errInfo);
     }
 });
 
@@ -178,7 +201,8 @@ app.get('/api/builds/:buildId/logs', async (req, res) => {
         }
     } catch (e) {
         const errInfo = getErrorData(e);
-        return  res.status(errInfo.status).end(errInfo.data);
+        console.log('errInfo: ', errInfo);
+        return res.status(errInfo.status).send(errInfo);
     }
 });
 

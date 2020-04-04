@@ -27,9 +27,10 @@ async function FindCommit(commitHash) {
             msg = lineItems[2];
             author = lineItems[1]
         }
-    });    
+    });
+    
     if (author.length === 0) {
-        throw new Error('Commit with hash ' + commitHash + ' was not found. Or more than 1 commits with this hash were found');
+        throw new Error('Commit with hash ' + commitHash + ' was not found.');
     }
     return {
         commitMessage: msg, 
