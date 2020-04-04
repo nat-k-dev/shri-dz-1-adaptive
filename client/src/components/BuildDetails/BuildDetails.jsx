@@ -28,6 +28,17 @@ async function callBackendAPIBuildDetails(buildId) {
     return body;
 };
 
+// функция вызова бэкенда, чтобы переслать commitHash на сервер
+async function callBackendAPIRebuild(commitHash) {
+    const response = await fetch('/api/builds/' + commitHash, {
+        method: 'POST'
+    });
+    if (response.status !== 200) {
+        const body = await response.json();
+        return body;
+    }
+};
+
 
 export default function BuildDetails({match, history}) {
     // отправили запрос на сервер. Нужно, чтобы не отправлять повторяющиеся запросы
@@ -63,7 +74,6 @@ export default function BuildDetails({match, history}) {
     if (!hasRequest) {
         callBackendAPIBuildDetails(buildId)
             .then(res => {
-                console.log('build details response: ', res);
                 const start = res.start ? convertDateTime(res.start) : {time: '-', date: '-'};
                 const duration = res.duration ? convertDuration(res.duration) : '0 ч 0 мин';
                 if (!hasDetails) {
@@ -90,7 +100,6 @@ export default function BuildDetails({match, history}) {
 
         callBackendAPIBuildLog(buildId)
             .then(res => {
-                console.log('build log response: ', res);
                 if (!hasBuildLog) {
                     if (res.error) {
                         setBuildLog(res.error);
@@ -108,8 +117,19 @@ export default function BuildDetails({match, history}) {
         setHasRequest(true);
     }
 
-    function handleRebuildClick() {
-        console.log('Rebuild');
+    async function handleRebuildClick() {
+        const commitHash = details.commitHash;
+        if (commitHash) {
+            callBackendAPIRebuild(commitHash)
+                .then(res => {
+                    if (res && res.status === 500) {
+                        alert(res.data);
+                    }
+                })
+                .catch(err => {
+                    console.log('catch in callBackendAPIRebuild: ', err);
+                });
+        }
     }
 
     return (
