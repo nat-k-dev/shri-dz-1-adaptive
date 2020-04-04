@@ -52,6 +52,9 @@ export default function Form({history}) {
         console.log('Disable buttons');
         setDisableButton(true);
     }
+    function handleCancelClick() {
+        history.goBack();
+    }
     function handleInputChange(fieldId, fieldValue) {
         setState({...state, [fieldId]: fieldValue});
     }
@@ -88,7 +91,7 @@ export default function Form({history}) {
 
             <div className="Form-Item_align_adaptive">
                 <button type="submit" disabled={disableButton} className="Button Button_color_primary Button_size_m Form-Button_gap_s font_size_s">Save</button>
-                <button type="button" disabled={disableButton} className="Button Button_color_secondary Button_size_m font_size_s">Cancel</button>
+                <button type="button" disabled={disableButton} onClick={handleCancelClick} className="Button Button_color_secondary Button_size_m font_size_s">Cancel</button>
             </div>
 
         </form>
