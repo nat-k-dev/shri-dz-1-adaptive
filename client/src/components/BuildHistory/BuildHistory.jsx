@@ -5,6 +5,7 @@ import Footer from '../Footer/Footer';
 import BuildCard from '../BuildCard/BuildCard';
 import LoaderAnimation from '../LoaderAnimation/LoaderAnimation';
 import { convertDateTime, convertDuration } from './../../utils';
+import './../PseudoLink/PseudoLink.scss';
 
 // функция вызова бэкенда, чтобы получить информацию о билдах
 async function callBackendAPIBuild() {
@@ -32,7 +33,7 @@ export default function BuildHistory({history}) {
                         const start = build.start ? convertDateTime(build.start) : {time: '-', date: '-'};
                         const duration = build.duration ? convertDuration(build.duration) : '0 ч 0 мин';
                         return (
-                            <Link to={'/build/' + build.id} style={{ textDecoration: 'none' }} key={build.buildNumber}>
+                            <Link to={'/build/' + build.id} className="PseudoLink" key={build.buildNumber}>
                                 <BuildCard 
                                         keyProp={build.buildNumber} 
                                         buildId={build.id} 

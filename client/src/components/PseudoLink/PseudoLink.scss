@@ -1,0 +1,11 @@
+.PseudoLink {
+    text-decoration: none;
+}
+
+.PseudoLink:visited {
+    color: var(--color-main-text);
+}
+
+.PseudoLink:active {
+    color: var(--color-main-text);
+}
