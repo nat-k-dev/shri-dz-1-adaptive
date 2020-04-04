@@ -23,4 +23,6 @@
     --orange-400: #FF9A00;
 
     --green-500: #00B341;
+
+    --half-transparent-grey-500: rgba(0, 0, 0, 0.5);
 }

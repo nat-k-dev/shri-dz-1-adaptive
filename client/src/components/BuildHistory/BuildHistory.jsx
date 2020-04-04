@@ -1,14 +1,16 @@
 import React, { useState } from 'react';
 import { Link } from "react-router-dom";
-import Header from '../Header/Header';
-import Footer from '../Footer/Footer';
-import BuildCard from '../BuildCard/BuildCard';
-import LoaderAnimation from '../LoaderAnimation/LoaderAnimation';
+import Header from './../Header/Header';
+import Footer from './../Footer/Footer';
+import BuildCard from './../BuildCard/BuildCard';
+import LoaderAnimation from './../LoaderAnimation/LoaderAnimation';
+import NewBuildModal from './../NewBuildModal/NewBuildModal'
 import { convertDateTime, convertDuration } from './../../utils';
 import './../PseudoLink/PseudoLink.scss';
 import './../BuildList/BuildList.scss';
 import './../Container/Container.scss';
 import './../Button/Button.scss';
+import useModal from './../NewBuildModal/useModal';
 
 // функция вызова бэкенда, чтобы получить информацию о билдах
 async function callBackendAPIBuild() {
@@ -64,14 +66,13 @@ export default function BuildHistory({history}) {
         setHasRequest(true);
     }
 
-    function handleBuildClick() {
-        console.log('Build');
-    }
+    const {isShowing, toggleModal} = useModal();
 
 
     return (
         <div className="Page Page_font_yandex">
-            <Header buildHistory={true}  history={history} handleBuildRebuildClick={handleBuildClick} />
+            <Header buildHistory={true}  history={history} handleBuildRebuildClick={toggleModal} />
+            <NewBuildModal isShowing={isShowing} hideModal={toggleModal} />
 
             <main className="Main">
                 <div className="Container">
@@ -80,12 +81,11 @@ export default function BuildHistory({history}) {
                             {builds}
                         </ul>)
                     }
-
                     <button className="Button Button_color_secondary Button_size_mixSM font_size_s">Show more</button>
                 </div>
             </main>
 
-            <Footer />    
+            <Footer />
         </div>
     );
 }
