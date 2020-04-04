@@ -6,6 +6,9 @@ import BuildCard from '../BuildCard/BuildCard';
 import LoaderAnimation from '../LoaderAnimation/LoaderAnimation';
 import { convertDateTime, convertDuration } from './../../utils';
 import './../PseudoLink/PseudoLink.scss';
+import './../BuildList/BuildList.scss';
+import './../Container/Container.scss';
+import './../Button/Button.scss';
 
 // функция вызова бэкенда, чтобы получить информацию о билдах
 async function callBackendAPIBuild() {

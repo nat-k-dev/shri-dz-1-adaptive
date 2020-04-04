@@ -5,11 +5,6 @@
 @import "./constants/box-shadow.css";
 @import "./constants/margin.css";
 @import "layout.css";
-@import "./Blocks-Elements-Modificators/Button.css";
-@import "./Blocks-Elements-Modificators/Container.css";
-@import "./Blocks-Elements-Modificators/BuildList.css";
-@import "./Blocks-Elements-Modificators/BuildStatuses.css";
-@import "./Blocks-Elements-Modificators/Icon.css";
 
 * {
     box-sizing: border-box;

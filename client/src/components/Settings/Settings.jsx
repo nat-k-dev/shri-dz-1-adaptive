@@ -2,6 +2,7 @@ import React from 'react';
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 import Form from '../Form/Form';
+import './../Container/Container.scss';
 
 export default function Settings({history}) {
     return (

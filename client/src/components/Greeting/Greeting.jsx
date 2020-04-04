@@ -2,6 +2,9 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './Greeting.scss';
 import './../PseudoLink/PseudoLink.scss';
+import './../Icon/Icon.scss';
+import './../Button/Button.scss';
+
 
 export default function Greeting() {
     return (

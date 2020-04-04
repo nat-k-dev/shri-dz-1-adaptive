@@ -1,6 +1,7 @@
 import React from 'react';
 import './Footer.scss';
 import NavLinks from './../NavLinks/NavLinks';
+import './../Container/Container.scss';
 
 export default function Footer() {
     return (

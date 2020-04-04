@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import Input from './../Input/Input';
 import './Form.scss';
+import './../Button/Button.scss';
+
 
 // функция вызова бэкенда, чтобы переслать settings на сервер
 async function callBackendAPI(state) {

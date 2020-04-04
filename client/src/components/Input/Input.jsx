@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import './Input.scss';
+import './../Icon/Icon.scss';
+import './../Button/Button.scss';
 
 
 export default function Input({id, placeholder, isRequired, hasDeleteIcon, onChange, additionalClasses, validate}) {

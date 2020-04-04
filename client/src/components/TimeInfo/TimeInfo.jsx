@@ -1,5 +1,6 @@
 import React from 'react';
 import './TimeInfo.scss';
+import './../Icon/Icon.scss';
 
 export default function TimeInfo({date, time, duration}) {
     return (

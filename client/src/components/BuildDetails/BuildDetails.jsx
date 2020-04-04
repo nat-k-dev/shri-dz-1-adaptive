@@ -5,6 +5,8 @@ import BuildCard from '../BuildCard/BuildCard';
 import BuildLog from '../BuildLog/BuildLog';
 import LoaderAnimation from '../LoaderAnimation/LoaderAnimation';
 import { convertDateTime, convertDuration } from './../../utils';
+import './../BuildList/BuildList.scss';
+import './../Container/Container.scss';
 
 // функция вызова бэкенда, чтобы получить билд лог
 async function callBackendAPIBuildLog(buildId) {

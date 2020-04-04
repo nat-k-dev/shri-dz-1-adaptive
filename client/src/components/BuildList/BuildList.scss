@@ -13,17 +13,3 @@
     margin: 0;
     padding: 0;
 }
-
-
-.Build-Details_align_compact {
-    display: grid;
-    grid-gap: 9px;
-    grid-template-columns: 1fr 98px;
-}
-
-@media (max-width: 360px) {
-    .Build-Details_align_compact {
-        grid-template-columns: 1fr;
-        grid-template-rows: 1fr min-content;
-    }   
-}

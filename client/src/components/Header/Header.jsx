@@ -1,6 +1,9 @@
 import React from 'react';
 import classnames from 'classnames';
 import './Header.scss';
+import './../Icon/Icon.scss';
+import './../Container/Container.scss';
+import './../Button/Button.scss';
 
 
 export default function Header({start, settings, buildHistory, details, history, handleBuildRebuildClick}) {

@@ -1,5 +1,6 @@
 import React from 'react';
 import './Commit.scss';
+import './../Icon/Icon.scss';
 
 export default function Commit({ branchName, commitHash, authorName }) {
     return (
