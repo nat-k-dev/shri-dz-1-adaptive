@@ -60,10 +60,14 @@ export default function BuildHistory({history}) {
         setHasRequest(true);
     }
 
+    function handleBuildClick() {
+        console.log('Build');
+    }
+
 
     return (
         <div className="Page Page_font_yandex">
-            <Header buildHistory={true}  history={history} />
+            <Header buildHistory={true}  history={history} handleBuildRebuildClick={handleBuildClick} />
 
             <main className="Main">
                 <div className="Container">
@@ -72,7 +76,6 @@ export default function BuildHistory({history}) {
                             {builds}
                         </ul>)
                     }
-                    
 
                     <button className="Button Button_color_secondary Button_size_mixSM font_size_s">Show more</button>
                 </div>

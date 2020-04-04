@@ -106,9 +106,13 @@ export default function BuildDetails({match, history}) {
         setHasRequest(true);
     }
 
+    function handleRebuildClick() {
+        console.log('Rebuild');
+    }
+
     return (
         <div className="Page Page_font_yandex">
-            <Header details={true}  history={history} />
+            <Header details={true}  history={history} handleBuildRebuildClick={handleRebuildClick} />
 
             <main className="Main">
                 <div className="Container">

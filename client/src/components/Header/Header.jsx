@@ -3,7 +3,7 @@ import classnames from 'classnames';
 import './Header.scss';
 
 
-export default function Header({start, settings, buildHistory, details, history}) {
+export default function Header({start, settings, buildHistory, details, history, handleBuildRebuildClick}) {
     const containerClass = classnames({
         'Container': true,
         'Container_align_header': start,
@@ -43,8 +43,9 @@ export default function Header({start, settings, buildHistory, details, history}
 
                 { (buildHistory || details) && 
                     <div className="Container_align_header Container_width_buttons">
-                        <button className="Button Button_color_secondary Button_size_s Button_gap_s font_size_s">
-                            <i className="Button-Icon Icon_type_build"></i>             
+                        <button className="Button Button_color_secondary Button_size_s Button_gap_s font_size_s"
+                                onClick={handleBuildRebuildClick}>
+                            <i className={buttonIconClass}></i>             
                             <div className="Button-Caption">{buttonText}</div>
                         </button>
                         <button className="Button Button_color_secondary Button_size_xs font_size_s"
