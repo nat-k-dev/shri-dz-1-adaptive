@@ -144,7 +144,7 @@ export default function BuildDetails({match, history}) {
                                 { hasDetails ? 
                                         (<BuildCard 
                                             keyProp={details.buildNumber} 
-                                            buildId={details.buildNumber} 
+                                            buildId={details.id} 
                                             buildCaption={details.commitMessage} 
                                             branchName={details.branchName} 
                                             commitHash={details.commitHash} 
