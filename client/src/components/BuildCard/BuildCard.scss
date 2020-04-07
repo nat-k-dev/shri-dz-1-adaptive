@@ -1,3 +1,5 @@
+@import './../../constants/const.scss';
+
 .BuildCard {
     display: grid;
     grid-template-columns: 22px 1fr;
@@ -7,7 +9,7 @@
     margin-top: 8px;
 }
 
-@media (max-width: 360px) {
+@media (max-width: $breakpoint-mobile) {
     .BuildCard {
         padding: 16px 7px 16px 13px;
     }
@@ -46,7 +48,7 @@
     white-space: nowrap;
 }
 
-@media (max-width: 360px) {
+@media (max-width: $breakpoint-mobile) {
     .Build-Caption {
         text-overflow: initial;
         overflow: auto;
@@ -67,7 +69,7 @@
     align-items: center;
 }
 
-@media (max-width: 360px) {
+@media (max-width: $breakpoint-mobile) {
     .Build-Info {
         grid-gap: 8px;
         grid-template-rows: max-content max-content;

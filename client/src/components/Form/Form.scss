@@ -1,3 +1,5 @@
+@import './../../constants/const.scss';
+
 :root {
     --color-input-placeholder: var(--grey-500);
     --color-form-description: var(--grey-900);
@@ -30,7 +32,7 @@
     align-items: center;    
 }
 
-@media (max-width: 360px) {
+@media (max-width: $breakpoint-mobile) {
     .Form-Item_align_adaptive {
         flex-direction: column;
         align-items: stretch;
@@ -110,7 +112,7 @@
     margin-bottom: 24px;
 }
 
-@media (max-width: 360px) {
+@media (max-width: $breakpoint-mobile) {
     .Form-Item_spaceBottom_l {
         margin-bottom: 16px;
     }
@@ -128,7 +130,7 @@
     margin-right: 8px;
 }
 
-@media (max-width: 360px) {
+@media (max-width: $breakpoint-mobile) {
     .Form-Item_verticalSpace_l {
         margin-top: 14px;
         margin-bottom: 14px;

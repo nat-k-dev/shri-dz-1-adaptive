@@ -1,3 +1,5 @@
+@import './../../constants/const.scss';
+
 :root {
     /* фон кнопок */
     --bg-color-btn-primary: var(--yellow-300);
@@ -38,7 +40,7 @@
     padding-left: 8px;
 }
 
-@media (max-width: 360px) {
+@media (max-width: $breakpoint-mobile) {
     .Button_size_s {
         padding-right: 8px;
     }
@@ -57,7 +59,7 @@
     margin-top: 8px;
 }
 
-@media (max-width: 360px) {
+@media (max-width: $breakpoint-mobile) {
     .Button_size_mixSM {
         min-height: 36px;
         padding-left: 20px;
@@ -109,7 +111,7 @@
     max-width: 100px;
 }
 
-@media (max-width: 360px) {
+@media (max-width: $breakpoint-mobile) {
     .Button-Caption {
         display: none;
     }

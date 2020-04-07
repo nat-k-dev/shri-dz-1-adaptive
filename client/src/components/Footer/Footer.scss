@@ -1,3 +1,5 @@
+@import './../../constants/const.scss';
+
 :root {
     --bg-color-footer: var(--grey-50);
     --color-footer: var(--grey-900);
@@ -19,7 +21,7 @@
     margin-bottom: 8px;
 }
 
-@media (max-width: 360px) {
+@media (max-width: $breakpoint-mobile) {
     .Footer-Copyright {
         margin-top: 0;
         margin-bottom: 12px;
@@ -33,7 +35,7 @@
     margin-top: 20px;
 }
 
-@media (max-width: 360px) {
+@media (max-width: $breakpoint-mobile) {
     .Footer_spaceTop_s {
         margin-top: 16px;
     }

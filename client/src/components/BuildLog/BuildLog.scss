@@ -1,3 +1,5 @@
+@import './../../constants/const.scss';
+
 :root {
     --text-log-bg-color: var(--grey-100);
 }
@@ -12,7 +14,7 @@
     overflow-x: auto; /* will make horizontal scroll-bar appear only when needed */
 }
 
-@media (max-width: 360px) {
+@media (max-width: $breakpoint-mobile) {
     .BuildLog {
         border-radius: 0;
         margin-top: 16px;
