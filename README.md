@@ -1,3 +1,8 @@
+# Домашнее задание. Тесты
+
+Можно прочитать тут: README-tests.md
+
+
 # Домашнее задание. React
 
 Решение находится в папке [client](https://github.com/appalse/shri-dz-1-adaptive/tree/react-server-dev/client).
