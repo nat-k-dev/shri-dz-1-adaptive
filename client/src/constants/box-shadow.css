@@ -4,4 +4,6 @@
 
     --box-shadow-grey-800-center: 0px 2px 8px var(--grey-1500);
     --box-shadow-grey-800-right: 0px 0px 1px var(--grey-1500);
+
+    --box-shadow-grey-1000-center: 0px 6px 16px var(--grey-1500);
 }

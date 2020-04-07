@@ -1,3 +1,12 @@
+# Домашнее задание. React
+
+Решение находится в папке [client](https://github.com/appalse/shri-dz-1-adaptive/tree/react-server-dev/client).
+Там же есть [Readme](https://github.com/appalse/shri-dz-1-adaptive/blob/react-server-dev/client/README.md).
+
+
+
+
+
 # Домашнее задание. Node.js
 
 Версия Node.js 12.13.0
@@ -92,13 +101,13 @@ node ./server/server.js
 .Build-Info {
     display: grid; 
     grid-gap: 8px; 
-    grid-template-rows: 20px min-content; 
+    grid-template-rows: minmax(20px, min-content) min-content; 
 }
 
 .Build-Title {
     display: grid;
     grid-gap: 4px;
-    grid-template-columns: 52px 1fr;
+    grid-template-columns: minmax(52px, max-content) 1fr;
     align-items: center;
 }
 ```

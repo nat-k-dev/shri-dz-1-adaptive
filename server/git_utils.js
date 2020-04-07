@@ -5,19 +5,13 @@ const exec = util.promisify(require('child_process').exec);
 const repoFolder = 'repo';
 
 async function GitClone(repoName, mainBranch) {
-    try {
-        const deletedPaths = await del([repoFolder]);
-        console.log('deleted paths: ', deletedPaths);
-        const { stdout, stderr } = await exec('git clone ' + repoName + ' ' + repoFolder);
-        console.log('git clone stdout:', stdout);
-        if (stderr.length > 0) {
-            throw new Error(stderr);
-        }
-        await exec('cd ' + repoFolder + ' && git checkout ' + mainBranch);
-        console.log('Repository cloning is finished. Checkout branch');
-    } catch(e) {
-        console.log(e); 
-    }
+    const deletedPaths = await del([repoFolder]);
+    console.log('deleted paths: ', deletedPaths);
+    const { stdout, stderr } = await exec('git clone ' + repoName + ' ' + repoFolder);
+    console.log('git clone stdout:', stdout);
+    console.log('git clone stderr:', stderr);
+    await exec('cd ' + repoFolder + ' && git checkout ' + mainBranch);
+    console.log('Repository cloning is finished. Checkout branch');
 }
 
 async function FindCommit(commitHash) {
@@ -33,9 +27,10 @@ async function FindCommit(commitHash) {
             msg = lineItems[2];
             author = lineItems[1]
         }
-    });    
+    });
+    
     if (author.length === 0) {
-        throw new Error('Commit with hash ' + commitHash + ' was not found. Or more than 1 commits with this hash were found');
+        throw new Error('Commit with hash ' + commitHash + ' was not found.');
     }
     return {
         commitMessage: msg, 

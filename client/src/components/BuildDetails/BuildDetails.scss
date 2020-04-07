@@ -1,0 +1,14 @@
+@import './../../constants/const.scss';
+
+.Build-Details_align_compact {
+    display: grid;
+    grid-gap: 9px;
+    grid-template-columns: 1fr 98px;
+}
+
+@media (max-width: $breakpoint-mobile) {
+    .Build-Details_align_compact {
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr min-content;
+    }   
+}

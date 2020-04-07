@@ -2,6 +2,7 @@ const path = require('path');
 const axios = require('axios');
 const https = require('https');
 const express = require('express');
+const cors = require('cors');
 const { getFileContent } = require('./static_pages');
 const { IsStr, IsNum } = require("./server_utils");
 const { FindCommit, GitClone } = require("./git_utils");
@@ -21,15 +22,38 @@ const api = axios.create({
 
 // Express.js
 const app = express();
-app.use(express.json())
+app.use(express.json());
 app.use(express.static(path.resolve(__dirname, 'static')));
 app.get('/favicon.ico', (req, res) => res.status(204));
+app.use(cors());
 
-// отдаем верстку
-app.get('/', (req, res) => { getFileContent(path.resolve(__dirname, './static/start_screen.html'), res); });
-app.get('/settings', (req, res) => { getFileContent(path.resolve(__dirname, './static/settings.html'), res); });
-app.get('/build_history', (req, res) => { getFileContent(path.resolve(__dirname, './static/build_history.html'), res); });
-app.get('/build_details', (req, res) => { getFileContent(path.resolve(__dirname, './static/build_details.html'), res); });
+/* Список доступных ручек:
+    get '/api/settings'
+    post '/api/settings' 
+        body:{"repoName": string,
+                "buildCommand": string,
+                "mainBranch": string,
+                "period": string}
+    get '/api/builds' 
+            header.params: offset, limit
+    post '/api/builds/:commitHash'
+            url-params: commitHash
+    get '/api/builds/:buildId'
+            url-params: buildId
+    get '/api/builds/:buildId/logs'
+            url-params: buildId
+*/
+
+function getErrorData(e) {
+    return {
+        status: (e.response && e.response.status) ? 
+                            e.response.status 
+                            : 500,
+        data: (e.response && e.response.data) ?
+                        JSON.stringify(e.response.data)
+                        : e.message
+    };
+}
 
 // получить извне сохраненные на сервере настройки через response
 app.get('/api/settings', async (req, res) => {
@@ -47,13 +71,15 @@ app.get('/api/settings', async (req, res) => {
             return res.status(500).send({ error: 'No conf settings data found' });
         }
     } catch (e) {
-        console.error(e.message);
-        return res.status(e.status).end(e.message);
+        const errInfo = getErrorData(e);
+        console.log('errInfo: ', errInfo);
+        return res.status(errInfo.status).send(errInfo);
     }
 });
 
 // сохранить новые настройки из request 
 app.post('/api/settings', async (req, res) => {
+    console.log('POST /api/settings');
     try {
         if (!req.body) {
             throw new Error({message: 'Settings was not set in body', status: 500});
@@ -68,14 +94,18 @@ app.post('/api/settings', async (req, res) => {
             "mainBranch": req.body.mainBranch,
             "period": Number(req.body.period)
         }
-        const apiResponse = await api.post('/conf', serverSettings);
-        res.status(apiResponse.status).send(apiResponse.statusText);
-        
         // git clone 
-        GitClone(req.body.repoName, req.body.mainBranch);
+        await GitClone(req.body.repoName, req.body.mainBranch);
+        const deleteResponse = await api.delete('/conf');
+        if (deleteResponse.status !== 200) {
+            throw new Error({message: 'Error while deleting repository settings', status: deleteResponse.status});
+        }
+        const apiResponse = await api.post('/conf', serverSettings);
+        return res.status(apiResponse.status).send(apiResponse.statusText);
     } catch (e) {
-        console.error(e.message);
-        return res.status(e.status).end(e.message);
+        const errInfo = getErrorData(e);
+        console.log('errInfo: ', errInfo);
+        return res.status(errInfo.status).send(errInfo);
     }
 });
 
@@ -88,20 +118,22 @@ app.get('/api/builds', async (req, res) => {
                 limit: req.params.limit || 25
             }
         });
-        const buildsArray = apiResponse.data.data;
-        if (buildsArray) {
+        if (apiResponse && apiResponse.data && apiResponse.data.data) {
+            const buildsArray = apiResponse.data.data;
             res.status(200).send(buildsArray);
         } else {
             res.status(500).send({ error: 'No builds found' });
         }
     } catch (e) {
-        console.error(e.message);
-        return res.status(e.status).end(e.message);
+        const errInfo = getErrorData(e);
+        console.log('errInfo: ', errInfo);
+        return res.status(errInfo.status).send(errInfo);
     }
 });
 
 // добавить сборку с commitHash в очередь сборок
 app.post('/api/builds/:commitHash', async (req, res) => {
+    console.log('POST /api/builds/:commitHash');
     try {
         const commitHash = req.params.commitHash;
         const buildConfResponse = await api.get('/conf');
@@ -109,7 +141,7 @@ app.post('/api/builds/:commitHash', async (req, res) => {
         if (!buildSettings) {
             throw new Error({message: 'Build settings are not found', status: 500});
         }
-        const { commitMessage, authorName } = await FindCommit(commitHash, buildSettings.mainBranch);
+        const { commitMessage, authorName } = await FindCommit(commitHash.substring(0, 7), buildSettings.mainBranch);
         const commitSettings = {
             "commitMessage": commitMessage,
             "commitHash": commitHash,
@@ -117,18 +149,21 @@ app.post('/api/builds/:commitHash', async (req, res) => {
             "authorName": authorName
         }
         const apiResponse = await api.post('/build/request', commitSettings);
-        console.log(apiResponse);
-        res.status(apiResponse.status).send(apiResponse.statusText);
+        
         // Постановка в очередь на сборку
         buildQueue.enqueue(commitHash);
+
+        res.status(apiResponse.status).send(apiResponse.statusText);
     } catch (e) {
-        console.error(e.message);
-        return res.status(e.status).end(e.message);
+        const errInfo = getErrorData(e);
+        console.log('errInfo: ', errInfo);
+        return res.status(errInfo.status).send(errInfo);
     }
 });
 
 // получить извне информацию о сборке с buildId
 app.get('/api/builds/:buildId', async (req, res) => {
+    console.log('GET /api/builds/:buildId');
     try {
         const buildId = req.params.buildId;
         if (!IsStr(buildId)) {
@@ -136,16 +171,16 @@ app.get('/api/builds/:buildId', async (req, res) => {
         }
         const params = { buildId: buildId };
         const apiResponse = await api.get('/build/details', { params });
-        const buildInfo = apiResponse.data.data;
-        console.log(buildInfo);
-        if (buildInfo) {
+        if (apiResponse.data && apiResponse.data.data) {
+            const buildInfo = apiResponse.data.data;
             res.status(200).send(buildInfo);
         } else {
             res.status(500).send({ error: 'No build found' });
         }
     } catch (e) {
-        console.error(e.message);
-        return res.status(e.status).end(e.message);
+        const errInfo = getErrorData(e);
+        console.log('errInfo: ', errInfo);
+        return res.status(errInfo.status).send(errInfo);
     }
 });
 
@@ -158,16 +193,16 @@ app.get('/api/builds/:buildId/logs', async (req, res) => {
         }
         const params = { buildId: buildId };
         const apiResponse = await api.get('/build/log', { params });
-        const buildLog = apiResponse.data.data;
-        console.log(buildLog);
-        if (buildLog) {
+        if (apiResponse.data) {
+            const buildLog = apiResponse.data;
             res.status(200).send(buildLog);
         } else {
             res.status(500).send({ error: 'No build log found' });
         }
     } catch (e) {
-        console.error(e.message);
-        return res.status(e.status).end(e.message);
+        const errInfo = getErrorData(e);
+        console.log('errInfo: ', errInfo);
+        return res.status(errInfo.status).send(errInfo);
     }
 });
 
@@ -206,5 +241,5 @@ async function runBuildFromQueue() {
 };
 runBuildFromQueue();
 
-app.listen(3000);
-console.log('Listening on localhost:3000');
+app.listen(5000);
+console.log('Listening on localhost:5000');

@@ -1,3 +1,20 @@
+@import './../../constants/const.scss';
+
+.BuildCard {
+    display: grid;
+    grid-template-columns: 22px 1fr;
+    grid-gap: 9px;
+    padding: 12px 25px 12px 24px;   
+    border-radius: var(--border-radius-build-card);
+    margin-top: 8px;
+}
+
+@media (max-width: $breakpoint-mobile) {
+    .BuildCard {
+        padding: 16px 7px 16px 13px;
+    }
+}
+
 
 .Build-Item {
     box-shadow: var(--box-shadow-build-card);
@@ -6,6 +23,7 @@
 
 .Build-Item:hover {
     box-shadow: var(--box-shadow-build-card-hovered);
+    cursor: pointer;
 }
 
 .Build-Item.Build-Item_action_no:hover {
@@ -30,7 +48,7 @@
     white-space: nowrap;
 }
 
-@media (max-width: 360px) {
+@media (max-width: $breakpoint-mobile) {
     .Build-Caption {
         text-overflow: initial;
         overflow: auto;
@@ -51,7 +69,7 @@
     align-items: center;
 }
 
-@media (max-width: 360px) {
+@media (max-width: $breakpoint-mobile) {
     .Build-Info {
         grid-gap: 8px;
         grid-template-rows: max-content max-content;

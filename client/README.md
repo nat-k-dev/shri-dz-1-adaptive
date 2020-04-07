@@ -1,4 +1,52 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Домашнее задание. React.
+
+В консоли зайдите в папку client. Установите зависимости
+```
+npm install
+```
+
+Запустите реакт через
+```
+npm start
+```
+
+Откроется страница в браузере по адресу localhost:3000.
+
+Доступны страницы:
+* localhost:3000
+* localhost:3000/settings
+* localhost:3000/build/:id
+* localhost:3000/start
+* localhost:3000/build_history
+* localhost:3000/build_details
+
+
+TODO (не сделано):
+* не подключен redux
+
+
+Известные проблемы, второй приоритет:
+* side эффекты прямо в компонентах. Надо сделать через useEffect
+* Использовать useReducer для нескольких состояний одного компонента
+* в React.memo обернуть некоторые компоненты, поискать какие
+* добавить проверку что сервер node запущен
+* lazy для route и для show more
+* вынести form в отдельный компонент
+* статусы билдов не берутся с сервера (BuildCard и BuildStatuses)
+* offset и limit в списке билда с сервера не реализован
+* кнопка Show more ничего не делает
+
+TODO попозже:
+* нет раскраски логов 
+* кнопка button не выделена в отдельный компонент
+* scss используется, но код написан в стиле css
+* местами используется глобальное подключение стилей, нет mixin'ов
+* в компоненте <BuildCard> передавать details одним объектом вместо десятка полей
+
+
+
+
+Стандартная простыня, сгенерированная create-react-app:
 
 ## Available Scripts
 

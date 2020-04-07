@@ -1,0 +1,43 @@
+@import './../../constants/const.scss';
+
+:root {
+    --bg-color-footer: var(--grey-50);
+    --color-footer: var(--grey-900);
+}
+
+.Footer {
+    min-height: 32px;
+    color: var(--color-footer);
+    background-color: var(--bg-color-footer);
+}
+
+.Footer-Copyright {
+    margin-top: 7px;
+    margin-bottom: 7px;
+}
+
+.Footer-NavLink {
+    margin-top: 8px;
+    margin-bottom: 8px;
+}
+
+@media (max-width: $breakpoint-mobile) {
+    .Footer-Copyright {
+        margin-top: 0;
+        margin-bottom: 12px;
+    }
+    .Footer-NavLink {
+        margin-top: 12px;
+    }
+}
+
+.Footer_spaceTop_s {
+    margin-top: 20px;
+}
+
+@media (max-width: $breakpoint-mobile) {
+    .Footer_spaceTop_s {
+        margin-top: 16px;
+    }
+    
+}

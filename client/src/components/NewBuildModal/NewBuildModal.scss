@@ -1,0 +1,29 @@
+:root {
+    --bg-color-outside-modal: var(--half-transparent-grey-500);
+    --bg-color-inside-modal: var(--white);
+}
+
+.NewBuildModal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.NewBuildModal_background {
+    background-color: var(--bg-color-outside-modal);
+}
+
+.NewBuildModal-Form {
+    background-color: var(--bg-color-inside-modal);
+    border-radius: var(--border-radius-modal);
+    box-shadow: var(--box-shadow-grey-1000-center), var(--box-shadow-grey-500-right);
+    padding: 20px;
+    display: grid;
+    grid-gap: 12px;
+    grid-template-columns: 1fr;   
+}

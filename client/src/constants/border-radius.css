@@ -10,5 +10,6 @@
     --border-radius-input: var(--border-radius-s);
     --border-radius-build-card: var(--border-radius-m);
     --border-radius-build-log: var(--border-radius-m);
-    --border-radius-horizontal-scroll: var(--border-radius-xxl);    
+    --border-radius-horizontal-scroll: var(--border-radius-xxl);
+    --border-radius-modal: var(--border-radius-m); 
 }
