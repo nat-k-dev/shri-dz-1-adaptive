@@ -4,7 +4,7 @@ import './Header.scss';
 import './../Icon/Icon.scss';
 import './../Container/Container.scss';
 import './../Button/Button.scss';
-
+import {AppRoutes} from './../../constants/AppRoutes';
 
 export default function Header({start, settings, buildHistory, details, history, handleBuildRebuildClick}) {
     const containerClass = classnames({
@@ -23,7 +23,7 @@ export default function Header({start, settings, buildHistory, details, history,
     if (details) buttonText = "Rebuild";
 
     function handleSettingsClick() {
-        history.push('/settings');
+        history.push(AppRoutes.SETTINGS);
     }
 
     return (

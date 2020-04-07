@@ -11,19 +11,18 @@ import Settings from '../Settings/Settings';
 import BuildHistory from '../BuildHistory/BuildHistory';
 import BuildDetails from '../BuildDetails/BuildDetails';
 import StartScreen from '../StartScreen/StartScreen';
-
+import {AppRoutes} from './../../constants/AppRoutes';
 
 export default function App() {
   return (
     <Router>
         <Switch>
-          <Route path='/' component={HomePage} exact />
-          <Route path='/settings' component={Settings} exact />
-          <Route path='/build/:id' component={BuildDetails} exact />
+          <Route path={AppRoutes.HOME} component={HomePage} exact />
+          <Route path={AppRoutes.SETTINGS} component={Settings} exact />
+          <Route path={AppRoutes.BUILD_ID_DETAILS} component={BuildDetails} exact />
           {/* Для целей отладки оставлены ручки: */}
-          <Route path='/start' component={StartScreen} exact />
-          <Route path='/build_history' component={BuildHistory} exact />
-          <Route path='/build_details' component={BuildDetails} exact />
+          <Route path={AppRoutes.START} component={StartScreen} exact />
+          <Route path={AppRoutes.BUILD_HISTORY} component={BuildHistory} exact />
         </Switch>
     </Router>
   );
