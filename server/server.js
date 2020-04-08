@@ -3,7 +3,6 @@ const axios = require('axios');
 const https = require('https');
 const express = require('express');
 const cors = require('cors');
-const { getFileContent } = require('./static_pages');
 const { IsStr, IsNum } = require("./server_utils");
 const { FindCommit, GitClone } = require("./git_utils");
 const { Queue } = require('./server_queue');
