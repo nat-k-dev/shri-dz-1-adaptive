@@ -13,7 +13,7 @@ async function callBackendAPIBuildLog(buildId) {
     const response = await fetch('/api/builds/' + buildId + '/logs');
     const body = await response.text();
     if (response.status !== 200 && response.status !== 500) {
-        throw Error(body.message);
+        throw Error(body.data);
     }
     return body;
 };
@@ -23,7 +23,7 @@ async function callBackendAPIBuildDetails(buildId) {
     const response = await fetch('/api/builds/' + buildId);
     const body = await response.json();
     if (response.status !== 200) {
-        throw Error(body.message);
+        throw Error(body.data);
     }
     return body;
 };

@@ -8,7 +8,7 @@ async function callBackendAPI() {
     const response = await fetch('/api/settings');
     const body = await response.json();
     if (response.status !== 200 && response.status !== 500) {
-        throw Error(body.message);
+        throw Error(body.data);
     }
     return body;
 };
