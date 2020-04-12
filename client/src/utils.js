@@ -15,6 +15,12 @@ const monthMap = {
 
 function convertDateTime(str) {
     const d = new Date(str);
+    if (isNaN(d.getTime())) {
+        return {
+            time: '-',
+            date: '-'
+        };
+    }
     return {
         time: d.getHours() + ':' + d.getMinutes(),
         date: d.getDate() + ' ' + monthMap[d.getMonth()]
