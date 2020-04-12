@@ -28,7 +28,7 @@ npm install
 API_TOKEN=sfsksuehfksjdfhisudhf...
 ```
 
-*Нужно передавать специальный токен в заголовке Authorization (например, Authorization: Bearer eyjhbgcioijiuzi1niisi, где "eyjhbgcioijiuzi1niisi" — это токен). Получить токен можно на страничке https://hw.shri.yandex. Для этого нужно залогиниться через GitHub. Скопируйте токен и сохраните его в файле ./server/authTokens/appalse.token.txt
+*Нужно передавать специальный токен в заголовке Authorization (например, Authorization: Bearer eyjhbgcioijiuzi1niisi, где "eyjhbgcioijiuzi1niisi" — это токен). Получить токен можно на страничке https://hw.shri.yandex. Для этого нужно залогиниться через GitHub. Скопируйте токен и задавайте его в API_TOKEN в .env
 
 Запустить сервер (порт 3000 по умолчанию):
 ```
