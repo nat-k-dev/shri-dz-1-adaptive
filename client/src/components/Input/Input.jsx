@@ -27,8 +27,8 @@ export default function Input({id, placeholder, isRequired, hasDeleteIcon, onCha
     return (
         <div className="Input">
             { isRequired ? 
-                (<input className={inputClass} type="text" value={state} onChange={handleChange} placeholder={placeholder} required />) :
-                (<input className={inputClass} type="text" value={state} onChange={handleChange} placeholder={placeholder}  />)
+                (<input id={id} className={inputClass} type="text" value={state} onChange={handleChange} placeholder={placeholder} required />) :
+                (<input id={id} className={inputClass} type="text" value={state} onChange={handleChange} placeholder={placeholder}  />)
             }
             { hasDeleteIcon && 
                 <button onClick={handleDeleteTextClick} className="Input-DeleteTextIcon Icon_type_deleteText"></button>
