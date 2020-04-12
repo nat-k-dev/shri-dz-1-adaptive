@@ -12,7 +12,7 @@ async function callBackendAPI(commitHash) {
     });
     if (response.status !== 200) {
         const body = await response.json();
-        return body;
+        return body.data;
     }
 };
 
@@ -35,7 +35,7 @@ export default function NewBuildModal({ isShowing, hideModal }) {
                 hideModal();
             })
             .catch(err => {
-                console.log('catch in callBackendAPI: ', err);
+                console.log('NewBuildModal: catch in callBackendAPI: ', err);
             })
     }
     

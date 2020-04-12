@@ -19,7 +19,7 @@ async function callBackendAPIBuild() {
     if (response.status !== 200) {
         throw Error(body.data);
     }
-    return body;
+    return body.data;
 };
 
 export default function BuildHistory({history}) {
@@ -58,7 +58,7 @@ export default function BuildHistory({history}) {
                 }
             })
             .catch(err => {
-                console.log('catch in callBackendAPI: ', err);
+                console.log('BuildHistory: catch in callBackendAPI: ', err);
                 setHasResponse(false);
             })
             .finally(() => {});

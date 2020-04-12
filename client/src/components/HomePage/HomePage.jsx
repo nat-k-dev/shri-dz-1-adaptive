@@ -10,7 +10,7 @@ async function callBackendAPI() {
     if (response.status !== 200 && response.status !== 500) {
         throw Error(body.data);
     }
-    return body;
+    return body.data;
 };
 
 export default function HomePage({history}) {
@@ -23,7 +23,7 @@ export default function HomePage({history}) {
         .then(res => {
             // бэкенд возвращает ошибку, что настройки не заданы, обрабатываем
             // ее, и показываем страницу StartScreen
-            if (res.error && res.error === 'No conf settings data found') {
+            if (res.data && res.data === 'No conf settings data found') {
                 console.log('The settings are not specified');
                 setHasSettings(false);
             }
@@ -34,7 +34,7 @@ export default function HomePage({history}) {
             }
             setHasResponse(true);
         })
-        .catch(err => console.log('catch in callBackendAPI: ', err));
+        .catch(err => console.log('HomePage: catch in callBackendAPI: ', err));
 
     return (
         <>

@@ -20,7 +20,7 @@ async function callBackendAPI(state) {
     });
     if (response.status !== 200) {
         const body = await response.json();
-        return body;
+        return body.data;
     }
 };
 
@@ -45,7 +45,7 @@ export default function Form({history}) {
                 } 
             })
             .catch(err => {
-                console.log('catch in callBackendAPI: ', err);
+                console.log('Form: catch in callBackendAPI: ', err);
             })
             .finally(() => {
                 console.log('Enable buttons');

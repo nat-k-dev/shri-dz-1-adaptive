@@ -11,11 +11,11 @@ import './../Container/Container.scss';
 // функция вызова бэкенда, чтобы получить билд лог
 async function callBackendAPIBuildLog(buildId) {
     const response = await fetch('/api/builds/' + buildId + '/logs');
-    const body = await response.text();
+    const body = await response.json();
     if (response.status !== 200 && response.status !== 500) {
         throw Error(body.data);
     }
-    return body;
+    return body.data;
 };
 
 // функция вызова бэкенда, чтобы получить информацию о билде по buildId
@@ -25,7 +25,7 @@ async function callBackendAPIBuildDetails(buildId) {
     if (response.status !== 200) {
         throw Error(body.data);
     }
-    return body;
+    return body.data;
 };
 
 // функция вызова бэкенда, чтобы переслать commitHash на сервер
@@ -35,7 +35,7 @@ async function callBackendAPIRebuild(commitHash) {
     });
     if (response.status !== 200) {
         const body = await response.json();
-        return body;
+        return body.data;
     }
 };
 
@@ -101,9 +101,7 @@ export default function BuildDetails({match, history}) {
         callBackendAPIBuildLog(buildId)
             .then(res => {
                 if (!hasBuildLog) {
-                    if (res.error) {
-                        setBuildLog(res.error);
-                    } else {
+                    if (res) {
                         setBuildLog(res);
                     }
                     setHasBuildLog(true);
