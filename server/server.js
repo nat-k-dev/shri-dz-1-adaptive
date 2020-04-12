@@ -37,6 +37,11 @@ app.use(cors());
             header.params: offset, limit
     post '/api/builds/:commitHash'
             url-params: commitHash
+            возвращает json {data: {
+                                    id: '15692e06-1754-4c17-9c79-b61bb1bc04c4',
+                                    buildNumber: 6,
+                                    status: 'Waiting'
+                            }}
     get '/api/builds/:buildId'
             url-params: buildId
     get '/api/builds/:buildId/logs'
@@ -67,7 +72,7 @@ app.get('/api/settings', async (req, res) => {
                 period: serverSettings.period
             });
         } else {
-            return res.status(500).send({ error: 'No conf settings data found' });
+            return res.status(500).send({ status: 500, data: 'No conf settings data found' });
         }
     } catch (e) {
         const errInfo = getErrorData(e);
@@ -81,11 +86,11 @@ app.post('/api/settings', async (req, res) => {
     console.log('POST /api/settings');
     try {
         if (!req.body) {
-            throw {message: 'Settings was not set in body', status: 500};
+            throw {data: 'Settings was not set in body', status: 500};
         }
         if (!isStr(req.body.repoName) || !isStr(req.body.buildCommand) || 
             !isStr(req.body.mainBranch) || !isNum(Number(req.body.period))) {
-                throw {message: 'Wrong data type in request', status: 500};
+                throw {data: 'Wrong data type in request', status: 500};
         }
         const serverSettings = {
             "repoName": req.body.repoName,
@@ -97,10 +102,10 @@ app.post('/api/settings', async (req, res) => {
         await gitClone(req.body.repoName, req.body.mainBranch);
         const deleteResponse = await api.delete('/conf');
         if (deleteResponse.status !== 200) {
-            throw {message: 'Error while deleting repository settings', status: deleteResponse.status};
+            throw {data: 'Error while deleting repository settings', status: deleteResponse.status};
         }
         const apiResponse = await api.post('/conf', serverSettings);
-        return res.status(apiResponse.status).send(apiResponse.statusText);
+        return res.status(apiResponse.status).send({data: apiResponse.data.data, status: apiResponse.status});
     } catch (e) {
         const errInfo = getErrorData(e);
         console.log('errInfo: ', errInfo);
@@ -119,9 +124,9 @@ app.get('/api/builds', async (req, res) => {
         });
         if (apiResponse && apiResponse.data && apiResponse.data.data) {
             const buildsArray = apiResponse.data.data;
-            res.status(200).send(buildsArray);
+            res.status(apiResponse.status).send({data: buildsArray, status: apiResponse.status});
         } else {
-            res.status(500).send({ error: 'No builds found' });
+            res.status(500).send({ data: 'No builds found', status: 500 });
         }
     } catch (e) {
         const errInfo = getErrorData(e);
@@ -138,7 +143,7 @@ app.post('/api/builds/:commitHash', async (req, res) => {
         const buildConfResponse = await api.get('/conf');
         const buildSettings = buildConfResponse.data.data;
         if (!buildSettings) {
-            throw {message: 'Build settings are not found', status: 500};
+            throw {data: 'Build settings are not found', status: 500};
         }
         const { commitMessage, authorName } = await findCommit(commitHash.substring(0, 7), buildSettings.mainBranch);
         const commitSettings = {
@@ -148,11 +153,12 @@ app.post('/api/builds/:commitHash', async (req, res) => {
             "authorName": authorName
         }
         const apiResponse = await api.post('/build/request', commitSettings);
+        console.log(apiResponse);
         
         // Постановка в очередь на сборку
         buildQueue.enqueue(commitHash);
 
-        res.status(apiResponse.status).send(apiResponse.statusText);
+        res.status(apiResponse.status).send({ data: apiResponse.data, status: apiResponse.status });
     } catch (e) {
         const errInfo = getErrorData(e);
         console.log('errInfo: ', errInfo);
@@ -166,15 +172,15 @@ app.get('/api/builds/:buildId', async (req, res) => {
     try {
         const buildId = req.params.buildId;
         if (!isStr(buildId)) {
-            throw {message: 'Wrong data type in request', status: 500};
+            throw {data: 'Wrong data type in request', status: 500};
         }
         const params = { buildId: buildId };
         const apiResponse = await api.get('/build/details', { params });
         if (apiResponse.data && apiResponse.data.data) {
             const buildInfo = apiResponse.data.data;
-            res.status(200).send(buildInfo);
+            res.status(apiResponse.status).send({data: buildInfo, status: apiResponse.status});
         } else {
-            res.status(500).send({ error: 'No build found' });
+            res.status(500).send({ data: 'No build found', status: 500 });
         }
     } catch (e) {
         const errInfo = getErrorData(e);
@@ -188,15 +194,15 @@ app.get('/api/builds/:buildId/logs', async (req, res) => {
     try {
         const buildId = req.params.buildId;
         if (!isStr(buildId)) {
-            throw {message: 'Wrong data type in request', status: 400};
+            throw { data: 'Wrong data type in request', status: 400 };
         }
         const params = { buildId: buildId };
         const apiResponse = await api.get('/build/log', { params });
         if (apiResponse.data) {
             const buildLog = apiResponse.data;
-            res.status(200).send(buildLog);
+            res.status(200).send({ data: buildLog, status: apiResponse.status });
         } else {
-            res.status(500).send({ error: 'No build log found' });
+            res.status(500).send({ data: 'No build log found', status: 500 });
         }
     } catch (e) {
         const errInfo = getErrorData(e);
