@@ -65,12 +65,14 @@ app.get('/api/settings', async (req, res) => {
         const apiResponse = await api.get('/conf');
         const serverSettings = apiResponse.data.data;
         if (serverSettings) {
-            return res.status(200).send({
-                repoName: serverSettings.repoName,
-                buildCommand: serverSettings.buildCommand,
-                mainBranch: serverSettings.mainBranch,
-                period: serverSettings.period
-            });
+            return res.status(200).send( {
+                data: {
+                        repoName: serverSettings.repoName,
+                        buildCommand: serverSettings.buildCommand,
+                        mainBranch: serverSettings.mainBranch,
+                        period: serverSettings.period
+                    },
+                status: 200 });
         } else {
             return res.status(500).send({ status: 500, data: 'No conf settings data found' });
         }
