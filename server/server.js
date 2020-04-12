@@ -81,11 +81,11 @@ app.post('/api/settings', async (req, res) => {
     console.log('POST /api/settings');
     try {
         if (!req.body) {
-            throw new Error({message: 'Settings was not set in body', status: 500});
+            throw {message: 'Settings was not set in body', status: 500};
         }
         if (!isStr(req.body.repoName) || !isStr(req.body.buildCommand) || 
             !isStr(req.body.mainBranch) || !isNum(Number(req.body.period))) {
-                throw new Error({message: 'Wrong data type in request', status: 500});
+                throw {message: 'Wrong data type in request', status: 500};
         }
         const serverSettings = {
             "repoName": req.body.repoName,
@@ -97,7 +97,7 @@ app.post('/api/settings', async (req, res) => {
         await gitClone(req.body.repoName, req.body.mainBranch);
         const deleteResponse = await api.delete('/conf');
         if (deleteResponse.status !== 200) {
-            throw new Error({message: 'Error while deleting repository settings', status: deleteResponse.status});
+            throw {message: 'Error while deleting repository settings', status: deleteResponse.status};
         }
         const apiResponse = await api.post('/conf', serverSettings);
         return res.status(apiResponse.status).send(apiResponse.statusText);
@@ -138,7 +138,7 @@ app.post('/api/builds/:commitHash', async (req, res) => {
         const buildConfResponse = await api.get('/conf');
         const buildSettings = buildConfResponse.data.data;
         if (!buildSettings) {
-            throw new Error({message: 'Build settings are not found', status: 500});
+            throw {message: 'Build settings are not found', status: 500};
         }
         const { commitMessage, authorName } = await findCommit(commitHash.substring(0, 7), buildSettings.mainBranch);
         const commitSettings = {
@@ -166,7 +166,7 @@ app.get('/api/builds/:buildId', async (req, res) => {
     try {
         const buildId = req.params.buildId;
         if (!isStr(buildId)) {
-            throw new Error({message: 'Wrong data type in request', status: 500});
+            throw {message: 'Wrong data type in request', status: 500};
         }
         const params = { buildId: buildId };
         const apiResponse = await api.get('/build/details', { params });
@@ -188,7 +188,7 @@ app.get('/api/builds/:buildId/logs', async (req, res) => {
     try {
         const buildId = req.params.buildId;
         if (!isStr(buildId)) {
-            throw new Error('Wrong data type in request');
+            throw {message: 'Wrong data type in request', status: 400};
         }
         const params = { buildId: buildId };
         const apiResponse = await api.get('/build/log', { params });

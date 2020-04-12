@@ -17,7 +17,7 @@ async function gitClone(repoName, mainBranch) {
 async function findCommit(commitHash) {
     const { stdout, stderr } = await exec('cd ' + repoFolder + ' && git log --format="%h|%an|%s. %D"');
     if (stderr.length > 0) {
-        throw new Error(stderr);
+        throw {message: stderr, status: 500};
     }
     let msg = '';
     let author = '';
@@ -30,7 +30,7 @@ async function findCommit(commitHash) {
     });
     
     if (author.length === 0) {
-        throw new Error('Commit with hash ' + commitHash + ' was not found.');
+        throw {message: 'Commit with hash ' + commitHash + ' was not found.', status: 400};
     }
     return {
         commitMessage: msg, 
