@@ -1,20 +1,10 @@
 import React, { useState } from 'react';
+import {postCommitHash} from './../../controller';
 import Input from './../Input/Input';
 import './NewBuildModal.scss';
 import './../Form/Form.scss';
 import './../Button/Button.scss';
 
-
-// функция вызова бэкенда, чтобы переслать commitHash на сервер
-async function callBackendAPI(commitHash) {
-    const response = await fetch('/api/builds/' + commitHash, {
-        method: 'POST'
-    });
-    if (response.status !== 200) {
-        const body = await response.json();
-        return body.data;
-    }
-};
 
 export default function NewBuildModal({ isShowing, hideModal }) {
     const initialState = {
@@ -27,7 +17,7 @@ export default function NewBuildModal({ isShowing, hideModal }) {
 
     function handleSubmitClick(event) {
         event.preventDefault();
-        callBackendAPI(state.commitHash)
+        postCommitHash(state.commitHash)
             .then(res => {
                 if (res && res.status === 500) {
                     alert(res.data);
@@ -35,7 +25,7 @@ export default function NewBuildModal({ isShowing, hideModal }) {
                 hideModal();
             })
             .catch(err => {
-                console.log('NewBuildModal: catch in callBackendAPI: ', err);
+                console.log('NewBuildModal: catch in postCommitHash: ', err);
             })
     }
     

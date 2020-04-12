@@ -1,17 +1,9 @@
 import React, { useState } from 'react';
+import {getApiSettings} from './../../controller';
 import StartScreen from '../StartScreen/StartScreen';
 import BuildHistory from '../BuildHistory/BuildHistory';
 import LoaderAnimation from './../LoaderAnimation/LoaderAnimation';
 
-// функция вызова бэкенда, чтобы узнать, заданы ли settings на сервере
-async function callBackendAPI() {
-    const response = await fetch('/api/settings');
-    const body = await response.json();
-    if (response.status !== 200 && response.status !== 500) {
-        throw Error(body.data);
-    }
-    return body.data;
-};
 
 export default function HomePage({history}) {
     // пока нет ответа сервера, то показываем анимацию
@@ -19,7 +11,7 @@ export default function HomePage({history}) {
     // если нет настроек, то показываем страницу StartScreen, иначе страницу со списком билдов
     const [hasSettings, setHasSettings] = useState(false);
     
-    callBackendAPI()
+    getApiSettings()
         .then(res => {
             // бэкенд возвращает ошибку, что настройки не заданы, обрабатываем
             // ее, и показываем страницу StartScreen
@@ -34,7 +26,7 @@ export default function HomePage({history}) {
             }
             setHasResponse(true);
         })
-        .catch(err => console.log('HomePage: catch in callBackendAPI: ', err));
+        .catch(err => console.log('HomePage: catch in getApiSettings: ', err));
 
     return (
         <>

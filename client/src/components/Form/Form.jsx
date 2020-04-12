@@ -1,28 +1,8 @@
 import React, { useState } from 'react';
+import {postApiSettings} from './../../controller';
 import Input from './../Input/Input';
 import './Form.scss';
 import './../Button/Button.scss';
-
-
-// функция вызова бэкенда, чтобы переслать settings на сервер
-async function callBackendAPI(state) {
-    const response = await fetch('/api/settings', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-            repoName: state.repoName,
-            buildCommand: state.buildCommand,
-            mainBranch: state.mainBranch,
-            period: state.period
-        })
-    });
-    if (response.status !== 200) {
-        const body = await response.json();
-        return body.data;
-    }
-};
 
 
 export default function Form({history}) {
@@ -38,7 +18,7 @@ export default function Form({history}) {
 
     function handleSubmitClick(event) {
         event.preventDefault();
-        callBackendAPI(state)
+        postApiSettings(state)
             .then(res => {
                 if (res && res.status === 500) {
                     alert(res.data);
