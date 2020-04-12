@@ -1,4 +1,4 @@
-function IsStr(str) {
+function isStr(str) {
     return typeof str === "string";
 }
 
@@ -7,6 +7,6 @@ function IsNum(n) {
 }
 
 module.exports = {
-    IsStr,
+    isStr,
     IsNum
 }

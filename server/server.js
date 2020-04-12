@@ -3,8 +3,8 @@ const axios = require('axios');
 const https = require('https');
 const express = require('express');
 const cors = require('cors');
-const { IsStr, IsNum } = require("./server_utils");
-const { FindCommit, GitClone } = require("./git_utils");
+const { isStr, isNum } = require("./server_utils");
+const { findCommit, gitClone } = require("./git_utils");
 const { Queue } = require('./server_queue');
 require('dotenv').config({path: __dirname + './../.env'});
 
@@ -83,8 +83,8 @@ app.post('/api/settings', async (req, res) => {
         if (!req.body) {
             throw new Error({message: 'Settings was not set in body', status: 500});
         }
-        if (!IsStr(req.body.repoName) || !IsStr(req.body.buildCommand) || 
-            !IsStr(req.body.mainBranch) || !IsNum(Number(req.body.period))) {
+        if (!isStr(req.body.repoName) || !isStr(req.body.buildCommand) || 
+            !isStr(req.body.mainBranch) || !isNum(Number(req.body.period))) {
                 throw new Error({message: 'Wrong data type in request', status: 500});
         }
         const serverSettings = {
@@ -94,7 +94,7 @@ app.post('/api/settings', async (req, res) => {
             "period": Number(req.body.period)
         }
         // git clone 
-        await GitClone(req.body.repoName, req.body.mainBranch);
+        await gitClone(req.body.repoName, req.body.mainBranch);
         const deleteResponse = await api.delete('/conf');
         if (deleteResponse.status !== 200) {
             throw new Error({message: 'Error while deleting repository settings', status: deleteResponse.status});
@@ -140,7 +140,7 @@ app.post('/api/builds/:commitHash', async (req, res) => {
         if (!buildSettings) {
             throw new Error({message: 'Build settings are not found', status: 500});
         }
-        const { commitMessage, authorName } = await FindCommit(commitHash.substring(0, 7), buildSettings.mainBranch);
+        const { commitMessage, authorName } = await findCommit(commitHash.substring(0, 7), buildSettings.mainBranch);
         const commitSettings = {
             "commitMessage": commitMessage,
             "commitHash": commitHash,
@@ -165,7 +165,7 @@ app.get('/api/builds/:buildId', async (req, res) => {
     console.log('GET /api/builds/:buildId');
     try {
         const buildId = req.params.buildId;
-        if (!IsStr(buildId)) {
+        if (!isStr(buildId)) {
             throw new Error({message: 'Wrong data type in request', status: 500});
         }
         const params = { buildId: buildId };
@@ -187,7 +187,7 @@ app.get('/api/builds/:buildId', async (req, res) => {
 app.get('/api/builds/:buildId/logs', async (req, res) => {
     try {
         const buildId = req.params.buildId;
-        if (!IsStr(buildId)) {
+        if (!isStr(buildId)) {
             throw new Error('Wrong data type in request');
         }
         const params = { buildId: buildId };
