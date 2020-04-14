@@ -49,17 +49,6 @@ async function getApiBuildDetails(buildId) {
     return body.data;
 };
 
-// функция вызова бэкенда, чтобы переслать commitHash на сервер
-async function postApiCommitHash(commitHash) {
-    const response = await fetch('/api/builds/' + commitHash, {
-        method: 'POST'
-    });
-    if (response.status !== 200) {
-        const body = await response.json();
-        return body.data;
-    }
-};
-
 // функция вызова бэкенда, чтобы получить информацию о билдах
 async function getApiBuilds() {
     const response = await fetch('/api/builds');
@@ -71,7 +60,7 @@ async function getApiBuilds() {
 };
 
 // функция вызова бэкенда, чтобы переслать commitHash на сервер
-async function postCommitHash(commitHash) {
+async function postApiCommitHash(commitHash) {
     const response = await fetch('/api/builds/' + commitHash, {
         method: 'POST'
     });
@@ -86,7 +75,6 @@ module.exports = {
     postApiSettings,
     getApiBuildLog,
     getApiBuildDetails,
-    postApiCommitHash,
     getApiBuilds,
-    postCommitHash
+    postApiCommitHash
 }
