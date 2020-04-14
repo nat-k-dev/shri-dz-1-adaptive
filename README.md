@@ -1,6 +1,6 @@
 # Домашнее задание. Тесты
 
-Можно прочитать тут: README-tests.md
+Можно прочитать тут: [README-tests.md](https://github.com/appalse/shri-dz-1-adaptive/blob/tests-dev/README-tests.md)
 
 
 # Домашнее задание. React
