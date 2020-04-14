@@ -1,4 +1,4 @@
-var {isStr, isNum} = require('./../../server/server_utils');
+var {isStr, isNum, invalidBuildCommand} = require('./../../server/server_utils');
 var chai = require('chai');
 var expect = chai.expect;
 
@@ -38,4 +38,22 @@ describe('Серверные утилиты', () => {
             expect(result).to.be.false;
         })
     }) /* describe: isNum */
+
+    describe('Функция invalidBuildCommand', () => {
+        it('возвращает false на npm run', () => {
+            const input = "npm run";
+            const result = invalidBuildCommand(input);
+            expect(result).to.be.false;
+        })
+        it('возвращает true на rm -rf', () => {
+            const input = "rm -rf";
+            const result = invalidBuildCommand(input);
+            expect(result).to.be.true;
+        })
+        it('возвращает true на cp', () => {
+            const input = "  cp .";
+            const result = invalidBuildCommand(input);
+            expect(result).to.be.true;
+        })
+    }) /* describe: invalidBuildCommand */
 }) 
