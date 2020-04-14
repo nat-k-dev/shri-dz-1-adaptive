@@ -1,6 +1,5 @@
 // функция вызова бэкенда, чтобы узнать, заданы ли settings на сервере
 async function getApiSettings() {
-    console.log('HomePage');
     const response = await fetch('/api/settings');
     const body = await response.json();
     if (response.status !== 200 && response.status !== 500) {
