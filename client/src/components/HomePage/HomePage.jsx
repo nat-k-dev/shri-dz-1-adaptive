@@ -18,13 +18,13 @@ export default function HomePage({history}) {
             .then(res => {
                 // бэкенд возвращает ошибку, что настройки не заданы, обрабатываем
                 // ее, и показываем страницу StartScreen
-                if (res.data && res.data === 'No conf settings data found') {
+                if (res && res.data === 'No conf settings data found') {
                     console.log('The settings are not specified');
                     setHasSettings(false);
                 }
                 // если в ответе с бэкенда есть репозиторий, ветка, билд-команда, то все ок,
                 // отображаем страницу со списком билдов
-                if (res.repoName && res.mainBranch && res.buildCommand) {
+                if (res && res.data && res.data.repoName && res.data.mainBranch && res.data.buildCommand) {
                     setHasSettings(true);
                 }
                 setHasResponse(true);
