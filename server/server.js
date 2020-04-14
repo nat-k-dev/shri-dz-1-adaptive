@@ -61,6 +61,7 @@ function getErrorData(e) {
 
 // получить извне сохраненные на сервере настройки через response
 app.get('/api/settings', async (req, res) => {
+    console.log('GET /api/settings');
     try {
         const apiResponse = await api.get('/conf');
         const serverSettings = apiResponse.data.data;
@@ -117,6 +118,7 @@ app.post('/api/settings', async (req, res) => {
 
 // получить извне список сборок
 app.get('/api/builds', async (req, res) => {
+    console.log('GET /api/builds');
     try {
         const apiResponse = await api.get('/build/list', {
             params: {
@@ -193,6 +195,7 @@ app.get('/api/builds/:buildId', async (req, res) => {
 
 // получить извне логи билда (сплошной текст)
 app.get('/api/builds/:buildId/logs', async (req, res) => {
+    console.log('GET /api/builds/:buildId/logs');
     try {
         const buildId = req.params.buildId;
         if (!isStr(buildId)) {
