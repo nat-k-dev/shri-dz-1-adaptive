@@ -1,4 +1,4 @@
-var {isStr, isNum, invalidBuildCommand} = require('./../../server/server_utils');
+var {isStr, isNum, invalidBuildCommand, getErrorData} = require('./../../server/server_utils');
 var chai = require('chai');
 var expect = chai.expect;
 
@@ -56,4 +56,31 @@ describe('Серверные утилиты', () => {
             expect(result).to.be.true;
         })
     }) /* describe: invalidBuildCommand */
+
+    describe('Функция getErrorData', () => {
+        it('возвращает объект {data: "message", status: 300} на таком же входном объекте', () => {
+            const input = {data: "message", status: 300};
+            const result = getErrorData(input);
+            expect(result).to.be.an('object').that.is.deep.equal({
+                data: "message",
+                status: 300
+            });
+        })
+        it('возвращает объект {data: "message", status: 400} на response', () => {
+            const input = { response: {data: {field: "message"}, status: 400}};
+            const result = getErrorData(input);
+            expect(result).to.be.an('object').that.is.deep.equal({
+                data: "{\"field\":\"message\"}",
+                status: 400
+            });
+        })
+        it('возвращает объект {data: undefined, status: 500} на undefined', () => {
+            const input = undefined;
+            const result = getErrorData(input);
+            expect(result).to.be.an('object').that.is.deep.equal({
+                data: undefined,
+                status: 500
+            });
+        })
+    }) /* describe: getErrorData */
 }) 
