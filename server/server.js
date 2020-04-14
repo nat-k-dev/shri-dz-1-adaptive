@@ -3,7 +3,7 @@ const axios = require('axios');
 const https = require('https');
 const express = require('express');
 const cors = require('cors');
-const { isStr, isNum, invalidBuildCommand } = require("./server_utils");
+const { isStr, isNum, invalidBuildCommand, getErrorData } = require("./server_utils");
 const { findCommit, gitClone } = require("./git_utils");
 const { Queue } = require('./server_queue');
 require('dotenv').config({path: __dirname + './../.env'});
@@ -48,16 +48,6 @@ app.use(cors());
             url-params: buildId
 */
 
-function getErrorData(e) {
-    return {
-        status: (e.response && e.response.status) ? 
-                            e.response.status 
-                            : 500,
-        data: (e.response && e.response.data) ?
-                        JSON.stringify(e.response.data)
-                        : e.message
-    };
-}
 
 // получить извне сохраненные на сервере настройки через response
 app.get('/api/settings', async (req, res) => {
@@ -98,6 +88,7 @@ app.post('/api/settings', async (req, res) => {
         if (invalidBuildCommand(req.body.buildCommand)) {
             throw {data: 'Invalid build command', status: 500};
         }
+        console.log('START');
         const serverSettings = {
             "repoName": req.body.repoName,
             "buildCommand": req.body.buildCommand,
