@@ -1,8 +1,20 @@
 const assert = require('assert');
+var chai = require('chai');
+var expect = chai.expect;
+
+
+const URL_SETTINGS = '/settings';
+
+const TEST_REPO_NAME = 'https://github.com/appalse/sportmaster-task.git';
+
+const REPOSITORY_NAME_SELECTOR = '#repoName';
+const MAIN_BRANCH_SELECTOR = '#mainBranch';
+const BUILD_COMMAND_SELECTOR = '#buildCommand';
+const PERIOD_SELECTOR = '#period';
 
 const elementExists = (browser, selector, errorMsg) => {
     return browser
-            .url('/settings')
+            .url(URL_SETTINGS)
             .waitForVisible(selector)
             .isExisting(selector)
             .then((exists) => {
@@ -21,16 +33,16 @@ describe('Страница settings.', () => {
         return elementExists(this.browser, '.Footer', 'Footer не появился');
     })
     it('Поле для ввода репозитория должно появиться на странице', function() {
-        return elementExists(this.browser, '#repoName', 'Поле для ввода репозитория не появилось');
+        return elementExists(this.browser, REPOSITORY_NAME_SELECTOR, 'Поле для ввода репозитория не появилось');
     })
     it('Поле для ввода ветки должно появиться на странице', function() {
-        return elementExists(this.browser, '#mainBranch', 'Поле для ввода репозитория не появилось');
+        return elementExists(this.browser, MAIN_BRANCH_SELECTOR, 'Поле для ввода репозитория не появилось');
     })
     it('Поле для ввода команды должно появиться на странице', function() {
-        return elementExists(this.browser, '#buildCommand', 'Поле для ввода команды не появилось');
+        return elementExists(this.browser, BUILD_COMMAND_SELECTOR, 'Поле для ввода команды не появилось');
     })
     it('Поле для ввода периода должно появиться на странице', function() {
-        return elementExists(this.browser, '#period', 'Поле для ввода периода не появилось');
+        return elementExists(this.browser, PERIOD_SELECTOR, 'Поле для ввода периода не появилось');
     })
     it('Кнопка Save должна появиться на странице', function() {
         return elementExists(this.browser, 'button[type="submit"]', 'Кнопка Save не появилось');
@@ -41,7 +53,7 @@ describe('Страница settings.', () => {
     /*it('обновляются после сохранения', function() {
         const repoName = 'https://github.com/appalse/sportmaster-task.git';
         return this.browser
-            .url('/settings')
+            .url(URL_SETTINGS)
             .waitForVisible('#repoName')
             .click('#repoName')
             .keys(repoName)
@@ -60,4 +72,20 @@ describe('Страница settings.', () => {
                 assert.strictEqual(value, repoName, 'Название репозитория не обновилось');
             })
     })*/
+    it('Нельзя ввести опасную команду', function() {
+        return this.browser
+            .url(URL_SETTINGS)
+            .waitForVisible(REPOSITORY_NAME_SELECTOR)
+            .click(REPOSITORY_NAME_SELECTOR)
+            .keys(TEST_REPO_NAME)
+            .click(BUILD_COMMAND_SELECTOR)
+            .keys('rm -rf')
+            .submitForm('.Form')
+            .alertText()
+            .then((alert) => {
+                console.log('alert = ', alert);
+                expect(alert).to.be.a('string').that.is.equal("Invalid build command");
+            })
+            .alertAccept()
+    })
 });
