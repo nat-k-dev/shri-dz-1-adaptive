@@ -24,7 +24,7 @@ async function postApiSettings(state) {
     });
     if (response.status !== 200) {
         const body = await response.json();
-        return body.data;
+        return body;
     }
 };
 

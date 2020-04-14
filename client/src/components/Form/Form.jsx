@@ -27,6 +27,7 @@ export default function Form({history}) {
                 } 
             })
             .catch(err => {
+                alert(err.data);
                 console.log('Form: catch in postApiSettings: ', err);
             })
             .finally(() => {
