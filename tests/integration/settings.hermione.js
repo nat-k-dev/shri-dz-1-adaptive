@@ -50,37 +50,41 @@ describe('Страница settings.', () => {
     it('Кнопка Cancel должна появиться на странице', function() {
         return elementExists(this.browser, 'button[type="button"]', 'Кнопка Cancel не появилось');
     })
-    /*it('обновляются после сохранения', function() {
-        const repoName = 'https://github.com/appalse/sportmaster-task.git';
+    it('обновляются после сохранения', function() {
         return this.browser
             .url(URL_SETTINGS)
-            .waitForVisible('#repoName')
-            .click('#repoName')
-            .keys(repoName)
-            .click('#buildCommand')
+            .waitForVisible(REPOSITORY_NAME_SELECTOR)
+            .clearElement(REPOSITORY_NAME_SELECTOR)
+            .click(REPOSITORY_NAME_SELECTOR)
+            .keys(TEST_REPO_NAME)
+            .clearElement(BUILD_COMMAND_SELECTOR)
+            .click(BUILD_COMMAND_SELECTOR)
             .keys('npm run build')
-            .click('#mainBranch')
+            .clearElement(MAIN_BRANCH_SELECTOR)
+            .click(MAIN_BRANCH_SELECTOR)
             .keys('master')
-            .submitForm('.Form')
+            .click('.Button[type="submit"]')
             .waitForEnabled('.Button')
             .url('/')
-            .url('/settings')
-            .waitForVisible('#repoName')
-            .getText('#repoName')
+            .url(URL_SETTINGS)
+            .waitForVisible(REPOSITORY_NAME_SELECTOR)
+            .getText(REPOSITORY_NAME_SELECTOR)
             .then((value) => {
                 console.log('VALUE = ', value);
-                assert.strictEqual(value, repoName, 'Название репозитория не обновилось');
+                assert.strictEqual(value, TEST_REPO_NAME, 'Название репозитория не обновилось');
             })
-    })*/
+    })
     it('Нельзя ввести опасную команду', function() {
         return this.browser
             .url(URL_SETTINGS)
             .waitForVisible(REPOSITORY_NAME_SELECTOR)
+            .clearElement(REPOSITORY_NAME_SELECTOR)
             .click(REPOSITORY_NAME_SELECTOR)
             .keys(TEST_REPO_NAME)
+            .clearElement(BUILD_COMMAND_SELECTOR)
             .click(BUILD_COMMAND_SELECTOR)
             .keys('rm -rf')
-            .submitForm('.Form')
+            .click('.Button[type="submit"]')
             .alertText()
             .then((alert) => {
                 console.log('alert = ', alert);
