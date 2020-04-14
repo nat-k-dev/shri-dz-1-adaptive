@@ -78,7 +78,7 @@ app.get('/api/settings', async (req, res) => {
         }
     } catch (e) {
         const errInfo = getErrorData(e);
-        console.log('errInfo: ', errInfo);
+        console.log('get/api/settings errInfo: ', errInfo);
         return res.status(errInfo.status).send(errInfo);
     }
 });
@@ -110,7 +110,7 @@ app.post('/api/settings', async (req, res) => {
         return res.status(apiResponse.status).send({data: apiResponse.data.data, status: apiResponse.status});
     } catch (e) {
         const errInfo = getErrorData(e);
-        console.log('errInfo: ', errInfo);
+        console.log('post/api/settings errInfo: ', errInfo);
         return res.status(errInfo.status).send(errInfo);
     }
 });
@@ -132,7 +132,7 @@ app.get('/api/builds', async (req, res) => {
         }
     } catch (e) {
         const errInfo = getErrorData(e);
-        console.log('errInfo: ', errInfo);
+        console.log('get/api/builds errInfo: ', errInfo);
         return res.status(errInfo.status).send(errInfo);
     }
 });
@@ -163,7 +163,7 @@ app.post('/api/builds/:commitHash', async (req, res) => {
         res.status(apiResponse.status).send({ data: apiResponse.data, status: apiResponse.status });
     } catch (e) {
         const errInfo = getErrorData(e);
-        console.log('errInfo: ', errInfo);
+        console.log('post/api/builds/:commitHash errInfo: ', errInfo);
         return res.status(errInfo.status).send(errInfo);
     }
 });
@@ -186,7 +186,7 @@ app.get('/api/builds/:buildId', async (req, res) => {
         }
     } catch (e) {
         const errInfo = getErrorData(e);
-        console.log('errInfo: ', errInfo);
+        console.log('get/api/builds/:buildId errInfo: ', errInfo);
         return res.status(errInfo.status).send(errInfo);
     }
 });
@@ -208,7 +208,7 @@ app.get('/api/builds/:buildId/logs', async (req, res) => {
         }
     } catch (e) {
         const errInfo = getErrorData(e);
-        console.log('errInfo: ', errInfo);
+        console.log('get/api/builds/:buildId/logs errInfo: ', errInfo);
         return res.status(errInfo.status).send(errInfo);
     }
 });
