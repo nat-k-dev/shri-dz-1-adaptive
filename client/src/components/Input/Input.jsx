@@ -4,11 +4,11 @@ import './../Icon/Icon.scss';
 import './../Button/Button.scss';
 
 
-export default function Input({id, placeholder, isRequired, hasDeleteIcon, onChange, additionalClasses, validate}) {
+export default function Input({id, placeholder, isRequired, hasDeleteIcon, onChange, additionalClasses, validate, value}) {
 
     const inputClass = additionalClasses ? ('Form-Input ' + additionalClasses) : 'Form-Input';
 
-    const [state, setState] = useState('');
+    const [state, setState] = useState(value);
     function handleChange(event) {
         if (validate && !validate(event.target.value)) {
             setState('');
