@@ -3,7 +3,7 @@ const axios = require('axios');
 const https = require('https');
 const express = require('express');
 const cors = require('cors');
-const { isStr, isNum } = require("./server_utils");
+const { isStr, isNum, invalidBuildCommand } = require("./server_utils");
 const { findCommit, gitClone } = require("./git_utils");
 const { Queue } = require('./server_queue');
 require('dotenv').config({path: __dirname + './../.env'});
@@ -94,6 +94,9 @@ app.post('/api/settings', async (req, res) => {
         if (!isStr(req.body.repoName) || !isStr(req.body.buildCommand) || 
             !isStr(req.body.mainBranch) || !isNum(Number(req.body.period))) {
                 throw {data: 'Wrong data type in request', status: 500};
+        }
+        if (invalidBuildCommand(req.body.buildCommand)) {
+            throw {data: 'Invalid build command', status: 500};
         }
         const serverSettings = {
             "repoName": req.body.repoName,
