@@ -3,9 +3,9 @@ async function getApiSettings() {
     const response = await fetch('/api/settings');
     const body = await response.json();
     if (response.status !== 200 && response.status !== 500) {
-        throw Error(body.data);
+        throw Error(body);
     }
-    return body.data;
+    return body;
 };
 
 // функция вызова бэкенда, чтобы переслать settings на сервер
