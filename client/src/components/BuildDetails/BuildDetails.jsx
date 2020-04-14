@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import {getApiBuildLog, getApiBuildDetails, postApiCommitHash} from './../../controller';
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 import BuildCard from '../BuildCard/BuildCard';
@@ -7,37 +8,6 @@ import LoaderAnimation from '../LoaderAnimation/LoaderAnimation';
 import { convertDateTime, convertDuration } from './../../utils';
 import './../BuildList/BuildList.scss';
 import './../Container/Container.scss';
-
-// функция вызова бэкенда, чтобы получить билд лог
-async function callBackendAPIBuildLog(buildId) {
-    const response = await fetch('/api/builds/' + buildId + '/logs');
-    const body = await response.json();
-    if (response.status !== 200 && response.status !== 500) {
-        throw Error(body.data);
-    }
-    return body.data;
-};
-
-// функция вызова бэкенда, чтобы получить информацию о билде по buildId
-async function callBackendAPIBuildDetails(buildId) {
-    const response = await fetch('/api/builds/' + buildId);
-    const body = await response.json();
-    if (response.status !== 200) {
-        throw Error(body.data);
-    }
-    return body.data;
-};
-
-// функция вызова бэкенда, чтобы переслать commitHash на сервер
-async function callBackendAPIRebuild(commitHash) {
-    const response = await fetch('/api/builds/' + commitHash, {
-        method: 'POST'
-    });
-    if (response.status !== 200) {
-        const body = await response.json();
-        return body.data;
-    }
-};
 
 
 export default function BuildDetails({match, history}) {
@@ -72,7 +42,7 @@ export default function BuildDetails({match, history}) {
     const buildId = match.params.id;
 
     if (!hasRequest) {
-        callBackendAPIBuildDetails(buildId)
+        getApiBuildDetails(buildId)
             .then(res => {
                 const start = res.start ? convertDateTime(res.start) : {time: '-', date: '-'};
                 const duration = res.duration ? convertDuration(res.duration) : '0 ч 0 мин';
@@ -93,12 +63,12 @@ export default function BuildDetails({match, history}) {
                 }
             })
             .catch(err => {
-                console.log('catch in callBackendAPIBuildDetails: ', err);
+                console.log('catch in getApiBuildDetails: ', err);
                 setHasDetails(false);
             })
             .finally(() => setHasResponse(true));
 
-        callBackendAPIBuildLog(buildId)
+        getApiBuildLog(buildId)
             .then(res => {
                 if (!hasBuildLog) {
                     if (res) {
@@ -108,7 +78,7 @@ export default function BuildDetails({match, history}) {
                 }
             })
             .catch(err => {
-                console.log('catch in callBackendAPIBuildLog: ', err);
+                console.log('catch in getApiBuildLog: ', err);
                 setHasBuildLog(false);
             })
             .finally(() => setHasResponse(true));
@@ -118,14 +88,14 @@ export default function BuildDetails({match, history}) {
     async function handleRebuildClick() {
         const commitHash = details.commitHash;
         if (commitHash) {
-            callBackendAPIRebuild(commitHash)
+            postApiCommitHash(commitHash)
                 .then(res => {
                     if (res && res.status === 500) {
                         alert(res.data);
                     }
                 })
                 .catch(err => {
-                    console.log('catch in callBackendAPIRebuild: ', err);
+                    console.log('catch in postApiCommitHash: ', err);
                 });
         }
     }

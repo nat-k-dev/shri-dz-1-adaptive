@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from "react-router-dom";
+import {getApiBuilds} from './../../controller';
 import Header from './../Header/Header';
 import Footer from './../Footer/Footer';
 import BuildCard from './../BuildCard/BuildCard';
@@ -12,15 +13,6 @@ import './../Container/Container.scss';
 import './../Button/Button.scss';
 import useModal from './../NewBuildModal/useModal';
 
-// функция вызова бэкенда, чтобы получить информацию о билдах
-async function callBackendAPIBuild() {
-    const response = await fetch('/api/builds');
-    const body = await response.json();
-    if (response.status !== 200) {
-        throw Error(body.data);
-    }
-    return body.data;
-};
 
 export default function BuildHistory({history}) {
     // отправили запрос на сервер. Нужно, чтобы не отправлять повторяющиеся запросы
@@ -30,8 +22,9 @@ export default function BuildHistory({history}) {
     // если нет деталей билда, то показываем ошибку
     const [builds, setBuilds] = useState([]);
 
+    console.log('BuildHistory');
     if (!hasRequest) {
-        callBackendAPIBuild()
+        getApiBuilds()
             .then(buildsList => {
                 if (!hasResponse) {
                     setBuilds(buildsList.map(build => {
@@ -58,7 +51,7 @@ export default function BuildHistory({history}) {
                 }
             })
             .catch(err => {
-                console.log('BuildHistory: catch in callBackendAPI: ', err);
+                console.log('BuildHistory: catch in getApiBuilds: ', err);
                 setHasResponse(false);
             })
             .finally(() => {});

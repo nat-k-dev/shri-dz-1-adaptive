@@ -1,28 +1,8 @@
 import React, { useState } from 'react';
+import {postApiSettings} from './../../controller';
 import Input from './../Input/Input';
 import './Form.scss';
 import './../Button/Button.scss';
-
-
-// функция вызова бэкенда, чтобы переслать settings на сервер
-async function callBackendAPI(state) {
-    const response = await fetch('/api/settings', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-            repoName: state.repoName,
-            buildCommand: state.buildCommand,
-            mainBranch: state.mainBranch,
-            period: state.period
-        })
-    });
-    if (response.status !== 200) {
-        const body = await response.json();
-        return body.data;
-    }
-};
 
 
 export default function Form({history}) {
@@ -36,16 +16,18 @@ export default function Form({history}) {
     };
     const [state, setState] = useState(initialState);
 
+
+
     function handleSubmitClick(event) {
         event.preventDefault();
-        callBackendAPI(state)
+        postApiSettings(state)
             .then(res => {
                 if (res && res.status === 500) {
                     alert(res.data);
                 } 
             })
             .catch(err => {
-                console.log('Form: catch in callBackendAPI: ', err);
+                console.log('Form: catch in postApiSettings: ', err);
             })
             .finally(() => {
                 console.log('Enable buttons');
@@ -63,6 +45,8 @@ export default function Form({history}) {
     function isNumber(fieldValue) {
         return !isNaN(Number(fieldValue));
     }
+
+    
     return (
         <form className="Form" onSubmit={handleSubmitClick} method="post">
             <div className="Form-Item_align_vertical Form-Item_verticalSpace_l">
