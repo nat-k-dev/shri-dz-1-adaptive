@@ -1,3 +1,8 @@
+# Домашнее задание. Typescript
+
+Можно прочитать тут: [README-ts.md](https://github.com/appalse/shri-dz-1-adaptive/blob/tests-dev/README-ts.md)
+
+
 # Домашнее задание. Тесты
 
 Можно прочитать тут: [README-tests.md](https://github.com/appalse/shri-dz-1-adaptive/blob/tests-dev/README-tests.md)
@@ -7,9 +12,6 @@
 
 Решение находится в папке [client](https://github.com/appalse/shri-dz-1-adaptive/tree/react-server-dev/client).
 Там же есть [Readme](https://github.com/appalse/shri-dz-1-adaptive/blob/react-server-dev/client/README.md).
-
-
-
 
 
 # Домашнее задание. Node.js
