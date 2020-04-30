@@ -1,3 +1,7 @@
+# Домашнее задание. Workers
+
+Можно прочитать тут: [README-workers.md](https://github.com/appalse/shri-dz-1-adaptive/blob/tests-dev/README-workers.md)
+
 # Домашнее задание. Typescript
 
 Можно прочитать тут: [README-ts.md](https://github.com/appalse/shri-dz-1-adaptive/blob/tests-dev/README-ts.md)
