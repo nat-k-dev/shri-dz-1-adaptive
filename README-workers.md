@@ -5,7 +5,7 @@
 Cache only для шрифтов и иконки. Эти данные очень редко меняются, поэтому их можно полностью закэшировать и всегда выдавать из кэша.
 
 ## Решение
-В файлах /client/public/index.html и /client/public/worker.js
+В файлах [/client/public/index.html](https://github.com/appalse/shri-dz-1-adaptive/blob/cache-workers/client/public/index.html) и [/client/public/worker.js](https://github.com/appalse/shri-dz-1-adaptive/blob/cache-workers/client/public/worker.js)
 
 ## Запуск 
 
