@@ -12,7 +12,7 @@ export default function HomePage({history}) {
     const [hasResponse, setHasResponse] = useState(false);
     // если нет настроек, то показываем страницу StartScreen, иначе страницу со списком билдов
     const [hasSettings, setHasSettings] = useState(false);
-    console.log('HomePage');
+    //console.log('HomePage');
     if (!hasRequest) {
         getApiSettings()
             .then(res => {
