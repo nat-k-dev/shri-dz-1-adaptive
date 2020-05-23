@@ -4,15 +4,17 @@ import './Greeting.scss';
 import './../PseudoLink/PseudoLink.scss';
 import './../Icon/Icon.scss';
 import './../Button/Button.scss';
+import { useTranslation } from 'react-i18next';
 
 
 export default function Greeting() {
+    const { t } = useTranslation();
     return (
         <div className="Greeting">
             <i className="Greeting-Icon Icon_type_tools"></i>           
-            <div className="Greeting-Caption">Configure repository connection and synchronization settings</div>
+            <div className="Greeting-Caption">{t('greetings-caption')}</div>
             <Link to='/settings' className="PseudoLink">
-                <button className="Button Button_color_primary Button_size_m font_size_s">Open settings</button>
+                <button className="Button Button_color_primary Button_size_m font_size_s">{t('open-settings')}</button>
             </Link>
         </div>
     );

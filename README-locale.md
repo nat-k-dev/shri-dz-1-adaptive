@@ -1,0 +1,65 @@
+# Домашняя работа. Локализация.
+
+## Подход
+Решила использовать готовые библиотеки в целях экономии времени:
+- i18next - ядро 
+- i18next-react - для упрощения работы с react-кодом
+- i18next-browser-languagedetector - для обнаружения языка пользователя
+
+## Что сделано и как
+Локализованы (переведены на русский язык) только:
+- главная страница (экран с приветствием)
+- страница с настройками (localhost:3000\settings)
+
+Также:
+- В файле [https://github.com/appalse/shri-dz-1-adaptive/blob/i18n/client/src/components/NavLinks/NavLinks.jsx] происходит обработка нажатия на кнопку для смены языка.
+- В файле [https://github.com/appalse/shri-dz-1-adaptive/blob/i18n/client/src/components/Form/Form.jsx] есть логика для обработки множественного числа во фразе "Synchronize every Х minutes", см. метод getPeriodTextCaption.
+- Переводы хранятся в файлах [https://github.com/appalse/shri-dz-1-adaptive/blob/i18n/client/src/App.keys.RU.json] и [https://github.com/appalse/shri-dz-1-adaptive/blob/i18n/client/src/App.keys.EN.json].
+- Синхронизация с gitlocalize не сделана.
+
+## Ответы на вопросы
+- ***как приложение узнает, какой язык выбран у пользователя?***
+Через библиотеку i18next-browser-languagedetector, в файле [https://github.com/appalse/shri-dz-1-adaptive/blob/i18n/client/src/i18n.js]
+
+- ***какие типы контента поддерживают переключение языка и как вы это реализовали?***
+Содержимое кнопок, ссылок, заголовки, текстовые поля. При помощи библиотек i18next и i18next-react (в коде вместо текста вызывается функция t() из хука useTranslation, из библиотеки react-i18next)
+
+- ***как переводы попадают на клиент? как изменилась сборка приложения?***
+Сборка приложения не изменилась. Переводы попадают на клиет через библиотеку i18next.
+
+
+## Запуск 
+
+### Запустить сервер:
+```
+npm i
+npm install -g typescript ts-node
+ts-node ./server/server.ts
+```
+
+В консоль пишутся логи, если вызываем какие-то ручки сервера. Но это не нужно для проверки кэширования.
+
+### Запустить клиента:
+```
+cd client
+npm i
+npm start
+```
+
+### Примечание к запуску:
+Нужно создать файл .env в корневой директории (рядом с package.json) и задать свой токен* через:
+```
+API_TOKEN=sfsksuehfksjdfhisudhf...
+```
+*Это специальный токен, который нужно передавать в заголовке Authorization (например, Authorization: Bearer eyjhbgcioijiuzi1niisi, где "eyjhbgcioijiuzi1niisi" — это токен). Получить токен можно на страничке https://hw.shri.yandex. Для этого нужно залогиниться через GitHub. Скопируйте токен и задавайте его в API_TOKEN в .env
+
+Дополнительно (вряд ли пригодится, но все же):
+в запросах к API укажите параметр "не проверять сертификат":
+- curl — добавьте параметр -k или --insecure
+- модули https и request — добавьте параметр rejectUnauthorized: false
+
+
+## Прочее
+
+Node v12.13.0
+ts-node v8.9.1 (используется для запуска сервера, требуется глобальная установка с флагом -g).

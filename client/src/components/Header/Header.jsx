@@ -5,8 +5,10 @@ import './../Icon/Icon.scss';
 import './../Container/Container.scss';
 import './../Button/Button.scss';
 import {AppRoutes} from './../../constants/AppRoutes';
+import { useTranslation } from 'react-i18next';
 
 export default function Header({start, settings, buildHistory, details, history, handleBuildRebuildClick}) {
+    const { t } = useTranslation();
     const containerClass = classnames({
         'Container': true,
         'Container_align_header': start,
@@ -30,7 +32,7 @@ export default function Header({start, settings, buildHistory, details, history,
         <header className="Header">
             <div className={containerClass}>
                 { (start || settings) &&
-                    <h1 className="Header-Caption Header-Caption_color_title font_size_xxl Header_spaces_h1">School CI server</h1>
+                    <h1 className="Header-Caption Header-Caption_color_title font_size_xxl Header_spaces_h1">{t('header-caption')}</h1>
                 }
                 { (buildHistory || details) &&
                     <h1 className="Header-Caption font_size_xxl Header_spaces_h1">philip1967/my-awesome-repo</h1>
@@ -40,7 +42,7 @@ export default function Header({start, settings, buildHistory, details, history,
                     <button className="Button Button_color_secondary Button_size_s font_size_s"
                             onClick={handleSettingsClick}>
                         <i className={buttonIconClass}></i>
-                        <div className="Button-Caption">Settings</div>
+                        <div className="Button-Caption">{t("buttons-settings")}</div>
                     </button>
                 }
 

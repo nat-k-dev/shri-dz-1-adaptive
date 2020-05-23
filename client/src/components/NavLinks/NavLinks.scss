@@ -11,8 +11,14 @@
     margin-right: 12px;
     margin-top: 8px;
     cursor: pointer;
+    border: none;
+    color: inherit;
 }
 
 .NavLinks-Item:hover {
     color: var(--color-nav-link-hovered);
+}
+
+.NavLinks-Item:focus {
+    border: none;
 }
