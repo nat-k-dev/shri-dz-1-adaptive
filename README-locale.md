@@ -1,22 +1,21 @@
 # Домашняя работа. Локализация.
 
-## Решение
+## Подход
 Решила использовать готовые библиотеки в целях экономии времени:
 - i18next - ядро 
 - i18next-react - для упрощения работы с react-кодом
 - i18next-browser-languagedetector - для обнаружения языка пользователя
 
-## Решения
+## Что сделано и как
 Локализованы (переведены на русский язык) только:
 - главная страница (экран с приветствием)
 - страница с настройками (localhost:3000\settings)
 
-В файле [https://github.com/appalse/shri-dz-1-adaptive/blob/i18n/client/src/components/NavLinks/NavLinks.jsx] происходит обработка нажатия на кнопку для смены языка.
-В файле [https://github.com/appalse/shri-dz-1-adaptive/blob/i18n/client/src/components/Form/Form.jsx] есть логика для обработки множественного числа во фразе "Synchronize every Х minutes", см. метод getPeriodTextCaption.
-
-Переводы хранятся в файлах [https://github.com/appalse/shri-dz-1-adaptive/blob/i18n/client/src/App.keys.RU.json] и [https://github.com/appalse/shri-dz-1-adaptive/blob/i18n/client/src/App.keys.EN.json].
-
-Синхронизация с gitlocalize не сделана.
+Также:
+- В файле [https://github.com/appalse/shri-dz-1-adaptive/blob/i18n/client/src/components/NavLinks/NavLinks.jsx] происходит обработка нажатия на кнопку для смены языка.
+- В файле [https://github.com/appalse/shri-dz-1-adaptive/blob/i18n/client/src/components/Form/Form.jsx] есть логика для обработки множественного числа во фразе "Synchronize every Х minutes", см. метод getPeriodTextCaption.
+- Переводы хранятся в файлах [https://github.com/appalse/shri-dz-1-adaptive/blob/i18n/client/src/App.keys.RU.json] и [https://github.com/appalse/shri-dz-1-adaptive/blob/i18n/client/src/App.keys.EN.json].
+- Синхронизация с gitlocalize не сделана.
 
 ## Ответы на вопросы
 - ***как приложение узнает, какой язык выбран у пользователя?***
