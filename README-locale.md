@@ -18,7 +18,7 @@
 
 Синхронизация с gitlocalize не сделана.
 
-
+## Ответы на вопросы
 - ***как приложение узнает, какой язык выбран у пользователя?***
 Через библиотеку i18next-browser-languagedetector, в файле [https://github.com/appalse/shri-dz-1-adaptive/blob/i18n/client/src/i18n.js]
 
