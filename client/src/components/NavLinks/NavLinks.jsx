@@ -1,5 +1,5 @@
 import React from 'react';
-import i18n from './../../i18n';
+import i18next from './../../i18n';
 import './NavLinks.scss';
 import './../Footer/Footer.scss';
 import { useTranslation } from 'react-i18next';
@@ -9,7 +9,7 @@ const changeLanguage = (currentLng) => {
     if (currentLng === 'en') {
         newLanguage = 'ru';
     }
-    i18n.changeLanguage(newLanguage);
+    i18next.changeLanguage(newLanguage);
   }
 
 export default function NavLinks() {
