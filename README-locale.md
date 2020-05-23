@@ -6,9 +6,19 @@
 - i18next-react - для упрощения работы с react-кодом
 - i18next-browser-languagedetector - для обнаружения языка пользователя
 
+## Решения
+Локализованы (переведены на русский язык) только:
+- главная страница (экран с приветствием)
+- страница с настройками (localhost:3000\settings)
+
 В файле client\src\components\NavLinks\NavLinks.jsx происходит обработка нажатия на кнопку для смены языка.
-Переводы хранятся в файлах /client/src/App.keys.***.json.
+В файле client\src\components\Form\Form.jsx есть логика для обработки множественного числа во фразе "Synchronize every Х minutes", см. метод getPeriodTextCaption.
+
+Переводы хранятся в файлах /client/src/App.keys.RU.json и /client/src/App.keys.EN.json.
+
 Синхронизация с gitlocalize не сделана.
+
+
 
 >> как приложение узнает, какой язык выбран у пользователя?
 Через библиотеку i18next-browser-languagedetector, в файле client/src/i18n.js
