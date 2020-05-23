@@ -6,5 +6,15 @@
     "website-author": "Наталья Карасева",
     "greetings-caption": "Задайте настройки репозитория и синхронизации",
     "open-settings": "Открыть настройки",
-    "buttons-settings": "Настройки"
+    "buttons-settings": "Настройки",
+    "settings-caption": "Настройки",
+    "settings-description": "Конфигурирование настроек репозитория и синхронизации.",
+    "form-repo-name-caption": "GitHub репозиторий",
+    "form-build-cmd-caption": "Команда сборки",
+    "form-branch-caption": "Основная ветка",
+    "form-period-caption": "Синхронизировать каждую {{count}} минуту",
+    "form-period-caption_plural": "Синхронизировать каждые {{count}} минут",
+    "form-period-caption_plural_2": "Синхронизировать каждые {{count}} минуты",
+    "save-button": "Сохранить",
+    "cancel-button": "Отмена"
 }

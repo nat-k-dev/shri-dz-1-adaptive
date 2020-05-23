@@ -6,5 +6,17 @@
     "website-author": "Natalia Karaseva",
     "greetings-caption": "Configure repository connection and synchronization settings",
     "open-settings": "Open settings",
-    "buttons-settings": "Settings"
+    "buttons-settings": "Settings",
+    "settings-caption": "Settings",
+    "settings-description": "Configure repository connection and synshronization settings.",
+    "form-repo-name-caption": "GitHub repository",
+    "form-build-cmd-caption": "Build command",
+    "form-branch-caption": "Main branch",
+    "form-period-caption": "Synchronize every {{count}} minute",
+    "form-period-caption_plural": "Synchronize every {{count}} minutes",
+    "save-button": "Save",
+    "cancel-button": "Cancel"
+
+
+
 }
