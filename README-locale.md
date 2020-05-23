@@ -11,17 +11,17 @@
 - главная страница (экран с приветствием)
 - страница с настройками (localhost:3000\settings)
 
-В файле client\src\components\NavLinks\NavLinks.jsx происходит обработка нажатия на кнопку для смены языка.
-В файле client\src\components\Form\Form.jsx есть логика для обработки множественного числа во фразе "Synchronize every Х minutes", см. метод getPeriodTextCaption.
+В файле (client\src\components\NavLinks\NavLinks.jsx)[https://github.com/appalse/shri-dz-1-adaptive/blob/i18n/client/src/components/NavLinks/NavLinks.jsx] происходит обработка нажатия на кнопку для смены языка.
+В файле (client\src\components\Form\Form.jsx)[https://github.com/appalse/shri-dz-1-adaptive/blob/i18n/client/src/components/Form/Form.jsx] есть логика для обработки множественного числа во фразе "Synchronize every Х minutes", см. метод getPeriodTextCaption.
 
-Переводы хранятся в файлах /client/src/App.keys.RU.json и /client/src/App.keys.EN.json.
+Переводы хранятся в файлах (/client/src/App.keys.RU.json)[https://github.com/appalse/shri-dz-1-adaptive/blob/i18n/client/src/App.keys.RU.json] и (/client/src/App.keys.EN.json)[https://github.com/appalse/shri-dz-1-adaptive/blob/i18n/client/src/App.keys.EN.json].
 
 Синхронизация с gitlocalize не сделана.
 
 
 
 >> как приложение узнает, какой язык выбран у пользователя?
-Через библиотеку i18next-browser-languagedetector, в файле client/src/i18n.js
+Через библиотеку i18next-browser-languagedetector, в файле (client/src/i18n.js)[https://github.com/appalse/shri-dz-1-adaptive/blob/i18n/client/src/i18n.js]
 
 >> какие типы контента поддерживают переключение языка и как вы это реализовали
 сожержимое кнопок, ссылок, заголовки, текстовые поля. При помощи библиотек i18next и i18next-react (в коде вместо текста вызывается функция t() из хука useTranslation, из библиотеки react-i18next)
