@@ -15,7 +15,7 @@
   },
   "devDependencies": {
     "@types/cors": "^2.8.6",
-    "hermione": "^3.1.0",
+    "hermione": "^5.3.1",
     "ts-node": "^8.9.1",
     "typescript": "^3.8.3"
   },
